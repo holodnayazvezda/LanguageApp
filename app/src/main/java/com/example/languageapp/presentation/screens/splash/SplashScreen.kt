@@ -11,22 +11,32 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.languageapp.R
+import com.example.languageapp.presentation.navigation.NavigationRoutes
 import com.example.languageapp.presentation.theme.deepBlue
 import kotlinx.coroutines.delay
 
 @Composable
-fun SplashScreen() {
+fun SplashScreen(
+    navigateToNextScreen: (route: String) -> Unit
+) {
+    LaunchedEffect(Unit) {
+        delay(1000)
+        navigateToNextScreen(NavigationRoutes.ONBOARDING_SCREEN.route)
+    }
     Box(
         modifier = Modifier.fillMaxSize().background(deepBlue),
         contentAlignment = Alignment.Center
     ) {
-        Column {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally
+        ){
             Image(
                 painter = painterResource(R.drawable.icon),
                 contentDescription = null,
@@ -36,7 +46,8 @@ fun SplashScreen() {
             Text(
                 text = "Language App",
                 style = MaterialTheme.typography.titleLarge,
-                fontSize = 42.sp
+                fontSize = 42.sp,
+                color = MaterialTheme.colorScheme.onPrimary
             )
         }
     }

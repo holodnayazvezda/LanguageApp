@@ -8,10 +8,10 @@ import androidx.compose.ui.text.font.FontWeight
 import com.example.languageapp.R
 
 val fredokaFontFamily = FontFamily(
-    Font(R.font.fredoka, FontWeight.Normal),
-    Font(R.font.fredoka, FontWeight.Bold),
-    Font(R.font.fredoka, FontWeight.SemiBold),
-    Font(R.font.fredoka, FontWeight.Medium),
+    Font(R.font.fredoka_regular, FontWeight.Normal),
+    Font(R.font.fredoka_bold, FontWeight.Bold),
+    Font(R.font.fredoka_semibold, FontWeight.SemiBold),
+    Font(R.font.fredoka_medium, FontWeight.Medium),
 )
 
 val Typography = Typography(
