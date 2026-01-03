@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.googleKsp)
 }
 
 android {
@@ -39,6 +40,11 @@ android {
     buildFeatures {
         compose = true
     }
+    ksp {
+        arg("KOIN_CONFIG_CHECK", "true")
+        arg("KOIN_DEFAULT_MODULE", "false")
+        arg("KOIN_USE_COMPOSE_VIEWMODEL", "true")
+    }
 }
 
 dependencies {
@@ -57,4 +63,28 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+    // навигация
+    implementation(libs.androidx.navigation.compose)
+    // pager
+    implementation(libs.foundation.pager)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(platform(libs.androidx.compose.bom))
+    androidTestImplementation(libs.androidx.compose.ui.test.junit4)
+    debugImplementation(libs.androidx.compose.ui.tooling)
+    debugImplementation(libs.androidx.compose.ui.test.manifest)
+    // koin
+    implementation(libs.koin.core)
+    implementation(libs.koin.android)
+    implementation(libs.koin.annotations)
+    implementation(libs.koin.androidx.compose)
+    implementation(libs.koin.androidx.compose.navigation)
+    ksp(libs.koin.ksp.compiler)
+    ksp(libs.koin.ksp.bom)
+    // retrofit
+    implementation(libs.bundles.retrofit)
+    // coil (подгрузка изображений)
+    implementation(libs.coil.compose)
+    implementation(libs.coil.network.okhttp)
 }
