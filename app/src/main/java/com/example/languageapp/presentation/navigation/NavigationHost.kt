@@ -1,8 +1,6 @@
 package com.example.languageapp.presentation.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.navigation.NavGraph
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -28,7 +26,9 @@ fun NavigationHost(
             )
         }
         composable(NavigationRoutes.ONBOARDING_SCREEN.route) {
-            OnboardingScreen()
+            OnboardingScreen(
+                navigateToNextScreen = {}
+            )
         }
     }
 }
