@@ -19,6 +19,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -33,11 +35,24 @@ import com.example.languageapp.presentation.components.AppButton
 import com.example.languageapp.presentation.theme.fredokaFontFamily
 import com.example.languageapp.presentation.theme.orange
 import kotlinx.coroutines.launch
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun OnboardingScreen(
+    viewModel: OnboardingScreenViewModel = koinViewModel(),
     navigateToNextScreen: () -> Unit
 ) {
+    val screenNumber = viewModel.screenNumber.collectAsState()
+    val pagerState = rememberPagerState(
+        initialPage = screenNumber.value,
+        pageCount = {3}
+    )
+    val scope = rememberCoroutineScope()
+
+    LaunchedEffect(pagerState.currentPage) {
+        viewModel.updateScreenNumber(pagerState.currentPage)
+    }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -46,8 +61,6 @@ fun OnboardingScreen(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Spacer(Modifier.height(160.dp))
-        val pagerState = rememberPagerState(pageCount = {3})
-        val scope = rememberCoroutineScope()
 
         HorizontalPager(
             state = pagerState,
