@@ -1,6 +1,7 @@
 package com.example.languageapp.presentation.screens.onboarding
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -137,7 +138,11 @@ fun OnboardingScreen(
             text = "Skip onboarding",
             fontFamily = fredokaFontFamily,
             fontSize = 15.sp,
-            color = MaterialTheme.colorScheme.onBackground
+            color = MaterialTheme.colorScheme.onBackground,
+            modifier = Modifier.clickable {
+                viewModel.updateScreenNumber(2)
+                navigateToNextScreen()
+            }
         )
 
     }

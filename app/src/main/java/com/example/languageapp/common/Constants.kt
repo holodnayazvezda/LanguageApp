@@ -1,6 +1,7 @@
 package com.example.languageapp.common
 
 import com.example.languageapp.R
+import com.example.languageapp.domain.models.LanguageModel
 import com.example.languageapp.domain.models.OnboardingItem
 
 object Constants {
@@ -20,5 +21,13 @@ object Constants {
             title = "The lessons you need to learn",
             description = "Using a variety of learning styles to learn\nand retain"
         )
+    )
+
+    val languageCodes = listOf(
+        LanguageModel(fullName = "Russian", shortName = "ru"),
+        LanguageModel(fullName = "English", shortName = "en"),
+        LanguageModel(fullName = "Chinese", shortName = "ch"),
+        LanguageModel(fullName = "Belarus", shortName = "by"),
+        LanguageModel(fullName = "Kazakh", shortName = "kz")
     )
 }
