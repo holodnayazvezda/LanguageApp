@@ -34,7 +34,9 @@ fun NavigationHost(
             )
         }
         composable(NavigationRoutes.LANGUAGE_SELECT_SCREEN.route) {
-            LanguageSelectScreen()
+            LanguageSelectScreen(
+                navigateToNextScreen = {}
+            )
         }
     }
 }

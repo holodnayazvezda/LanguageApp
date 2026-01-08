@@ -14,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.languageapp.domain.models.LanguageModel
@@ -42,7 +43,7 @@ fun LanguageCard(
     ) {
         Spacer(Modifier.width(20.dp))
         Text(
-            text = card.fullName,
+            text = stringResource(card.nameResId),
             style = MaterialTheme.typography.titleMedium,
             color = dark,
             fontSize = 22.sp

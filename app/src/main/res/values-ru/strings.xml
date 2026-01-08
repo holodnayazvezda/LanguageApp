@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Изучение языков</string>
+    <string name="onboarding_title_1">Уверенность в своих словах</string>
+    <string name="onboarding_desc_1">С обучением на основе общения\nвы заговорите с первого урока</string>
+    <string name="onboarding_title_2">Не торопитесь учиться</string>
+    <string name="onboarding_desc_2">Сформируйте привычку учиться и\nсделайте это частью своей повседневной рутины</string>
+    <string name="onboarding_title_3">Уроки, которые вам нужно выучить</string>
+    <string name="onboarding_desc_3">Использование различных стилей обучения для изучения\nи закрепления</string>
+    <string name="btn_next">Далее</string>
+    <string name="btn_more">Больше</string>
+    <string name="btn_choose_language">Выбрать язык</string>
+    <string name="btn_skip_onboarding">Пропустить обучение</string>
+    <string name="language_select_header">Выбор языка</string>
+    <string name="btn_choose">Выбрать</string>
+    <string name="mother_language_question">Какой ваш родной язык?</string>
+    
+    <string name="lang_russian">Русский</string>
+    <string name="lang_english">Английский</string>
+    <string name="lang_chinese">Китайский</string>
+    <string name="lang_belarusian">Белорусский</string>
+    <string name="lang_kazakh">Казахский</string>
+</resources>

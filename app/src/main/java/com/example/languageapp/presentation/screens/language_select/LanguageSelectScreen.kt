@@ -15,34 +15,40 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.languageapp.R
 import com.example.languageapp.common.Constants
 import com.example.languageapp.presentation.components.AppButton
 import com.example.languageapp.presentation.components.LanguageCard
 import com.example.languageapp.presentation.components.ScreenDefaultTopAppBor
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun LanguageSelectScreen() {
-    var selectedLanguage by remember { mutableStateOf(Constants.languageCodes[0].shortName) }
+fun LanguageSelectScreen(
+    navigateToNextScreen: () -> Unit,
+    viewModel: LanguageSelectViewModel = koinViewModel()
+) {
+    val selectedLanguage = viewModel.selectedLanguage.collectAsState()
     Scaffold(
         topBar = {
             ScreenDefaultTopAppBor(
-                title = "Language select",
+                title = stringResource(R.string.language_select_header),
                 navigateToPreviousScreen = null
             )
         },
         bottomBar = {
             Column(modifier = Modifier.fillMaxWidth().padding(horizontal = 28.dp)) {
                 AppButton(
-                    text = "Choose",
-                    onClick = {}
+                    text = stringResource(R.string.btn_choose),
+                    onClick = {
+                        viewModel.setSelectedLanguageInAndroid()
+                        navigateToNextScreen()
+                    }
                 )
                 Spacer(Modifier.height(30.dp))
             }
@@ -56,7 +62,7 @@ fun LanguageSelectScreen() {
         ) {
             Spacer(Modifier.padding(8.dp))
             Text(
-                text = "What is your Mother language?",
+                text = stringResource(R.string.mother_language_question),
                 style = MaterialTheme.typography.titleMedium,
                 color = MaterialTheme.colorScheme.onBackground,
                 fontSize = 22.sp
@@ -70,9 +76,9 @@ fun LanguageSelectScreen() {
                 items(Constants.languageCodes) { card ->
                     LanguageCard(
                         card = card,
-                        isSelected = selectedLanguage == card.shortName,
+                        isSelected = selectedLanguage.value == card.shortName,
                         onClick = {
-                            selectedLanguage = card.shortName
+                            viewModel.setSelectedLanguage(card.shortName);
                         }
                     )
                 }

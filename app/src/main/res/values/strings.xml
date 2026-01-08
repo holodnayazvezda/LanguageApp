@@ -1,3 +1,22 @@
 <resources>
-    <string name="app_name">LanguageApp</string>
+    <string name="app_name">Language App</string>
+    <string name="onboarding_title_1">Confidence in your words</string>
+    <string name="onboarding_desc_1">With conversation-based learning,\nyou\'ll be talking from lesson one</string>
+    <string name="onboarding_title_2">Take your time to learn</string>
+    <string name="onboarding_desc_2">Develop a habit of learning and\nmake it a part of your daily routine</string>
+    <string name="onboarding_title_3">The lessons you need to learn</string>
+    <string name="onboarding_desc_3">Using a variety of learning styles to learn\nand retain</string>
+    <string name="btn_next">Next</string>
+    <string name="btn_more">More</string>
+    <string name="btn_choose_language">Choose a language</string>
+    <string name="btn_skip_onboarding">Skip onboarding</string>
+    <string name="language_select_header">Language select</string>
+    <string name="btn_choose">Choose</string>
+    <string name="mother_language_question">What is your Mother language?</string>
+    
+    <string name="lang_russian">Russian</string>
+    <string name="lang_english">English</string>
+    <string name="lang_chinese">Chinese</string>
+    <string name="lang_belarusian">Belarus</string>
+    <string name="lang_kazakh">Kazakh</string>
 </resources>

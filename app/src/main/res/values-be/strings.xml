@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Вывучэнне моў</string>
+    <string name="onboarding_title_1">Упэўненасць у сваіх словах</string>
+    <string name="onboarding_desc_1">З навучаннем на аснове стасункаў\nвы загаворыце з першага ўрока</string>
+    <string name="onboarding_title_2">Не спяшайцеся вучыцца</string>
+    <string name="onboarding_desc_2">Сфармуйце звычку вучыцца і\nзрабіце гэта часткай сваёй штодзённай руціны</string>
+    <string name="onboarding_title_3">Урокі, якія вам трэба вывучыць</string>
+    <string name="onboarding_desc_3">Выкарыстанне розных стыляў навучання для вывучэння\nі замацавання</string>
+    <string name="btn_next">Далей</string>
+    <string name="btn_more">Больш</string>
+    <string name="btn_choose_language">Выбраць мову</string>
+    <string name="btn_skip_onboarding">Прапусціць навучанне</string>
+    <string name="language_select_header">Выбар мовы</string>
+    <string name="btn_choose">Выбраць</string>
+    <string name="mother_language_question">Якая ваша родная мова?</string>
+    
+    <string name="lang_russian">Руская</string>
+    <string name="lang_english">Англійская</string>
+    <string name="lang_chinese">Кітайская</string>
+    <string name="lang_belarusian">Беларуская</string>
+    <string name="lang_kazakh">Казахская</string>
+</resources>

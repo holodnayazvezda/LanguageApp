@@ -28,9 +28,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.languageapp.R
 import com.example.languageapp.common.Constants
 import com.example.languageapp.presentation.components.AppButton
 import com.example.languageapp.presentation.theme.fredokaFontFamily
@@ -99,29 +101,30 @@ fun OnboardingScreen(
                 }
                 Spacer(Modifier.height(20.dp))
                 Text(
-                    text = currentItem.title,
+                    text = stringResource(currentItem.titleResId),
                     style = MaterialTheme.typography.titleMedium,
                     fontSize = 22.sp,
-                    color = MaterialTheme.colorScheme.onBackground
+                    color = MaterialTheme.colorScheme.onBackground,
+                    textAlign = TextAlign.Center
                 )
                 Spacer(Modifier.height(5.dp))
                 Text(
-                    text = currentItem.description,
+                    text = stringResource(currentItem.descriptionResId),
                     fontFamily = fredokaFontFamily,
                     fontSize = 15.sp,
                     color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.6f),
                     textAlign = TextAlign.Center
                 )
-                Spacer(Modifier.height(110.dp))
+                Spacer(Modifier.height(90.dp))
             }
         }
         AppButton(
             text = if (pagerState.currentPage == 0) {
-                "Next"
+                stringResource(R.string.btn_next)
             } else if (pagerState.currentPage == 1) {
-                "More"
+                stringResource(R.string.btn_more)
             } else {
-                "Choose a language"
+                stringResource(R.string.btn_choose_language)
             },
             onClick = {
                 if (pagerState.currentPage < 2) {
@@ -135,7 +138,7 @@ fun OnboardingScreen(
         )
         Spacer(Modifier.height(15.dp))
         Text(
-            text = "Skip onboarding",
+            text = stringResource(R.string.btn_skip_onboarding),
             fontFamily = fredokaFontFamily,
             fontSize = 15.sp,
             color = MaterialTheme.colorScheme.onBackground,

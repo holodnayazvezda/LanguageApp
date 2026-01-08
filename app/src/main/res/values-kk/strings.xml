@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Тіл үйрену</string>
+    <string name="onboarding_title_1">Сөздеріңізге сенімділік</string>
+    <string name="onboarding_desc_1">Сөйлесуге негізделген оқыту арқылы\nсіз бірінші сабақтан бастап сөйлейсіз</string>
+    <string name="onboarding_title_2">Үйренуге уақыт бөліңіз</string>
+    <string name="onboarding_desc_2">Оқу дағдысын қалыптастырыңыз және\nоны күнделікті жұмысыңыздың бір бөлігіне айналдырыңыз</string>
+    <string name="onboarding_title_3">Сізге қажетті сабақтар</string>
+    <string name="onboarding_desc_3">Үйрену және есте сақтау үшін\nтүрлі оқыту стильдерін қолдану</string>
+    <string name="btn_next">Келесі</string>
+    <string name="btn_more">Толығырақ</string>
+    <string name="btn_choose_language">Тілді таңдаңыз</string>
+    <string name="btn_skip_onboarding">Таныстыруды өткізіп жіберу</string>
+    <string name="language_select_header">Тілді таңдау</string>
+    <string name="btn_choose">Таңдау</string>
+    <string name="mother_language_question">Сіздің ана тіліңіз қайсы?</string>
+    
+    <string name="lang_russian">Орыс тілі</string>
+    <string name="lang_english">Ағылшын тілі</string>
+    <string name="lang_chinese">Қытай тілі</string>
+    <string name="lang_belarusian">Беларусь тілі</string>
+    <string name="lang_kazakh">Қазақ тілі</string>
+</resources>

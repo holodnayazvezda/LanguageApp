@@ -15,6 +15,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.languageapp.R
@@ -44,7 +45,7 @@ fun SplashScreen(
             )
             Spacer(Modifier.height(10.dp))
             Text(
-                text = "Language App",
+                text = stringResource(R.string.app_name),
                 style = MaterialTheme.typography.titleLarge,
                 fontSize = 42.sp,
                 color = MaterialTheme.colorScheme.onPrimary

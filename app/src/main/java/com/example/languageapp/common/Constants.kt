@@ -8,26 +8,26 @@ object Constants {
     val onboardingItems = listOf(
         OnboardingItem(
             image = R.drawable.onb1,
-            title = "Confidence in your words",
-            description = "With conversation-based learning,\nyou'll be talking from lesson one"
+            titleResId = R.string.onboarding_title_1,
+            descriptionResId = R.string.onboarding_desc_1
         ),
         OnboardingItem(
             image = R.drawable.onb2,
-            title = "Take your time to learn",
-            description = "Develop a habit of learning and\nmake it a part of your daily routine"
+            titleResId = R.string.onboarding_title_2,
+            descriptionResId = R.string.onboarding_desc_2
         ),
         OnboardingItem(
             image = R.drawable.onb3,
-            title = "The lessons you need to learn",
-            description = "Using a variety of learning styles to learn\nand retain"
+            titleResId = R.string.onboarding_title_3,
+            descriptionResId = R.string.onboarding_desc_3
         )
     )
 
     val languageCodes = listOf(
-        LanguageModel(fullName = "Russian", shortName = "ru"),
-        LanguageModel(fullName = "English", shortName = "en"),
-        LanguageModel(fullName = "Chinese", shortName = "ch"),
-        LanguageModel(fullName = "Belarus", shortName = "by"),
-        LanguageModel(fullName = "Kazakh", shortName = "kz")
+        LanguageModel(nameResId = R.string.lang_russian, shortName = "ru"),
+        LanguageModel(nameResId = R.string.lang_english, shortName = "en"),
+        LanguageModel(nameResId = R.string.lang_chinese, shortName = "zh"),
+        LanguageModel(nameResId = R.string.lang_belarusian, shortName = "be"),
+        LanguageModel(nameResId = R.string.lang_kazakh, shortName = "kk")
     )
 }
