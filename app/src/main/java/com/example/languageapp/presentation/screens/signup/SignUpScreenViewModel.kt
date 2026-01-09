@@ -1,15 +1,24 @@
 package com.example.languageapp.presentation.screens.signup
 
 import androidx.lifecycle.ViewModel
+import com.example.languageapp.data.storage.AppStorage
 import com.example.languageapp.domain.models.SignUpModel
 import com.example.languageapp.domain.usecase.SignUpUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
 class SignUpScreenViewModel(
+    val appStorage: AppStorage,
     val signUpUseCase: SignUpUseCase = SignUpUseCase()
 ): ViewModel() {
-    private var _signUpModel = MutableStateFlow(SignUpModel())
+    private var _signUpModel = MutableStateFlow(SignUpModel(
+        firstName = appStorage.firstName ?: "",
+        lastName = appStorage.secondName ?: "",
+        email = appStorage.email ?: "",
+        password = appStorage.password ?: "",
+        confirmPassword = appStorage.confirmPassword ?: "",
+        confirmUserAgreement = appStorage.confirmUserAgreement
+    ))
     val signUpModel = _signUpModel.asStateFlow();
 
     fun updateData(
@@ -28,6 +37,12 @@ class SignUpScreenViewModel(
             confirmPassword = confirmPassword,
             confirmUserAgreement = confirmUserAgreement
         )
+        appStorage.firstName = firstName
+        appStorage.secondName = lastName
+        appStorage.email = email
+        appStorage.password = password
+        appStorage.confirmPassword = confirmPassword
+        appStorage.confirmUserAgreement = confirmUserAgreement
     }
 
     fun checkOnErrors(checkPassword: Boolean = false): Boolean {

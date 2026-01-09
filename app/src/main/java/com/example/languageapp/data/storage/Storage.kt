@@ -15,7 +15,7 @@ open class Storage(
         return sharedPreferences.getString(key, "")
     }
 
-    fun putString(key: String, value: String) {
+    fun putString(key: String, value: String?) {
         sharedPreferences.edit().putString(key, value).apply()
     }
 

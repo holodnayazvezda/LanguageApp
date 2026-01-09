@@ -12,12 +12,13 @@ import com.example.languageapp.presentation.screens.signup.CreatePasswordScreen
 import com.example.languageapp.presentation.screens.signup.SignUpScreen
 import com.example.languageapp.presentation.screens.signup.SignUpScreenViewModel
 import com.example.languageapp.presentation.screens.splash.SplashScreen
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun NavigationHost(
     navController: NavHostController = rememberNavController()
 ) {
-    val signUpViewModel = SignUpScreenViewModel()
+    val signUpViewModel = koinViewModel<SignUpScreenViewModel>()
     NavHost(
         navController = navController,
         startDestination = NavigationRoutes.SPLASH_SCREEN.route,
