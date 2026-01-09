@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.languageapp.presentation.components.AppButton
 import com.example.languageapp.presentation.components.AppTextField
+import com.example.languageapp.presentation.components.InfoDialog
 import com.example.languageapp.presentation.components.ScreenDefaultTopAppBor
 import com.example.languageapp.presentation.theme.blue
 import com.example.languageapp.presentation.theme.greyDark
@@ -40,7 +41,9 @@ fun SignUpScreen(
         }
     ) { paddingValues ->
         Column(
-            modifier = Modifier.padding(paddingValues).padding(horizontal = 20.dp)
+            modifier = Modifier
+                .padding(paddingValues)
+                .padding(horizontal = 20.dp)
                 .background(MaterialTheme.colorScheme.background),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -71,12 +74,15 @@ fun SignUpScreen(
                 placeholder = "Email",
                 onValueChange = { viewModel.updateData(email = it) },
                 value = signUpState.email,
-                isPassword = true
             )
             Spacer(Modifier.height(30.dp))
             AppButton(
                 text = "Continue",
-                onClick = navigateToCreatePasswordScreen
+                onClick = {
+                    if (!viewModel.checkOnErrors()) {
+                        navigateToCreatePasswordScreen()
+                    }
+                }
             )
             Spacer(Modifier.height(25.dp))
             Row{
@@ -98,5 +104,13 @@ fun SignUpScreen(
                 )
             }
         }
+    }
+
+    if (signUpState.isError) {
+        InfoDialog(
+            onConfirm = { viewModel.readError() },
+            title = "Error",
+            text = signUpState.errorText
+        )
     }
 }

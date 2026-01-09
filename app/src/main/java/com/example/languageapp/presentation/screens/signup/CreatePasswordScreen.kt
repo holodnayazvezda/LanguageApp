@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.languageapp.presentation.components.AppButton
 import com.example.languageapp.presentation.components.AppTextField
+import com.example.languageapp.presentation.components.InfoDialog
 import com.example.languageapp.presentation.components.ScreenDefaultTopAppBor
 import com.example.languageapp.presentation.theme.blue
 import com.example.languageapp.presentation.theme.greyDark
@@ -120,7 +121,11 @@ fun CreatePasswordScreen(
             Spacer(Modifier.height(80.dp))
             AppButton(
                 text = "Signup",
-                onClick = navigateToLogin
+                onClick = {
+                    if (!viewModel.checkOnErrors(true)) {
+                        navigateToLogin()
+                    }
+                }
             )
             Spacer(Modifier.height(30.dp))
             Row{
@@ -144,4 +149,11 @@ fun CreatePasswordScreen(
         }
     }
 
+    if (signUpState.isError) {
+        InfoDialog(
+            onConfirm = { viewModel.readError() },
+            title = "Error",
+            text = signUpState.errorText
+        )
+    }
 }
