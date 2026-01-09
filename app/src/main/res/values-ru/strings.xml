@@ -19,4 +19,32 @@
     <string name="lang_chinese">Китайский</string>
     <string name="lang_belarusian">Белорусский</string>
     <string name="lang_kazakh">Казахский</string>
+
+    <string name="signup">Регистрация</string>
+    <string name="create_account">Создать аккаунт</string>
+    <string name="first_name">Имя</string>
+    <string name="your_first_name">Ваше имя</string>
+    <string name="last_name">Фамилия</string>
+    <string name="your_last_name">Ваша фамилия</string>
+    <string name="email_address">Электронная почта</string>
+    <string name="email">Email</string>
+    <string name="continue_btn">Продолжить</string>
+    <string name="already_member">Уже есть аккаунт?</string>
+    <string name="login">Войти</string>
+    <string name="choose_password">Выберите пароль</string>
+    <string name="password">Пароль</string>
+    <string name="confirm_password">Подтвердите пароль</string>
+    <string name="i_have_made">Я ознакомился с</string>
+    <string name="the_rules">правилами</string>
+    <string name="accept_provisions"> и принимаю все их положения,</string>
+    <string name="error">Ошибка</string>
+    <string name="ok">ОК</string>
+
+    <string name="error_first_name_empty">Имя не может быть пустым</string>
+    <string name="error_last_name_empty">Фамилия не может быть пустой</string>
+    <string name="error_email_empty">Email не может быть пустым</string>
+    <string name="error_invalid_email">Некорректный адрес электронной почты</string>
+    <string name="error_password_requirements">Пароль должен содержать не менее 8 символов, одну заглавную букву, одну строчную букву, одну цифру и один спецсимвол</string>
+    <string name="error_passwords_do_not_match">Пароли не совпадают</string>
+    <string name="error_accept_agreement">Вы должны принять пользовательское соглашение</string>
 </resources>

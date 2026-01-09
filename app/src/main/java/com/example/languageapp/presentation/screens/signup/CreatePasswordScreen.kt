@@ -18,11 +18,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.languageapp.R
 import com.example.languageapp.presentation.components.AppButton
 import com.example.languageapp.presentation.components.AppTextField
 import com.example.languageapp.presentation.components.InfoDialog
@@ -41,7 +43,7 @@ fun CreatePasswordScreen(
     Scaffold(
         topBar = {
             ScreenDefaultTopAppBor(
-                title = "Signup",
+                title = stringResource(R.string.signup),
                 navigateToPreviousScreen = navigateBack
             )
         }
@@ -55,14 +57,14 @@ fun CreatePasswordScreen(
         ) {
             Spacer(Modifier.height(40.dp))
             Text(
-                text = "Choose a Password",
+                text = stringResource(R.string.choose_password),
                 style = MaterialTheme.typography.titleMedium,
                 fontSize = 22.sp,
                 color = MaterialTheme.colorScheme.onBackground
             )
             Spacer(Modifier.height(30.dp))
             AppTextField(
-                name = "Password",
+                name = stringResource(R.string.password),
                 placeholder = "●●●●●●●",
                 onValueChange = { viewModel.updateData(password = it) },
                 value = signUpState.password,
@@ -70,7 +72,7 @@ fun CreatePasswordScreen(
             )
             Spacer(Modifier.height(25.dp))
             AppTextField(
-                name = "Confirm Password",
+                name = stringResource(R.string.confirm_password),
                 placeholder = "●●●●●●●",
                 onValueChange = { viewModel.updateData(confirmPassword = it) },
                 value = signUpState.confirmPassword,
@@ -92,9 +94,10 @@ fun CreatePasswordScreen(
                     )
                     Spacer(Modifier.width(5.dp))
                     val annotatedString = buildAnnotatedString {
-                        append("I ")
+                        append(stringResource(R.string.i_have_made))
+                        append(" ")
                         withStyle(SpanStyle(color = blue)) {
-                            append("have made myself acquainted with")
+                            append(stringResource(R.string.the_rules))
                         }
                     }
                     Text(
@@ -106,9 +109,9 @@ fun CreatePasswordScreen(
                 Row(Modifier.fillMaxWidth()) {
                     val annotatedString = buildAnnotatedString {
                         withStyle(SpanStyle(color = blue)) {
-                            append("the Rules")
+                            append(stringResource(R.string.the_rules))
                         }
-                        append(" and accept all its provisions,")
+                        append(stringResource(R.string.accept_provisions))
                     }
                     Spacer(Modifier.width(10.dp))
                     Text(
@@ -120,7 +123,7 @@ fun CreatePasswordScreen(
             }
             Spacer(Modifier.height(80.dp))
             AppButton(
-                text = "Signup",
+                text = stringResource(R.string.signup),
                 onClick = {
                     if (!viewModel.checkOnErrors(true)) {
                         navigateToLogin()
@@ -130,14 +133,14 @@ fun CreatePasswordScreen(
             Spacer(Modifier.height(30.dp))
             Row{
                 Text(
-                    text = "Already you member?",
+                    text = stringResource(R.string.already_member),
                     color = greyDark,
                     style = MaterialTheme.typography.titleSmall,
                     fontSize = 17.sp
                 )
                 Spacer(Modifier.width(5.dp))
                 Text(
-                    text = "Login",
+                    text = stringResource(R.string.login),
                     color = blue,
                     style = MaterialTheme.typography.titleMedium,
                     fontSize = 17.sp,
@@ -152,8 +155,8 @@ fun CreatePasswordScreen(
     if (signUpState.isError) {
         InfoDialog(
             onConfirm = { viewModel.readError() },
-            title = "Error",
-            text = signUpState.errorText
+            title = stringResource(R.string.error),
+            text = signUpState.errorResId?.let { stringResource(it) } ?: ""
         )
     }
 }

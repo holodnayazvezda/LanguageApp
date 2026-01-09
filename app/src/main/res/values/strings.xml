@@ -17,6 +17,34 @@
     <string name="lang_russian">Russian</string>
     <string name="lang_english">English</string>
     <string name="lang_chinese">Chinese</string>
-    <string name="lang_belarusian">Belarus</string>
+    <string name="lang_belarusian">Belarusian</string>
     <string name="lang_kazakh">Kazakh</string>
+
+    <string name="signup">Signup</string>
+    <string name="create_account">Create an Account</string>
+    <string name="first_name">First Name</string>
+    <string name="your_first_name">Your First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="your_last_name">Your Last Name</string>
+    <string name="email_address">Email Address</string>
+    <string name="email">Email</string>
+    <string name="continue_btn">Continue</string>
+    <string name="already_member">Already you member?</string>
+    <string name="login">Login</string>
+    <string name="choose_password">Choose a Password</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="i_have_made">I have made myself acquainted with</string>
+    <string name="the_rules">the Rules</string>
+    <string name="accept_provisions"> and accept all its provisions,</string>
+    <string name="error">Error</string>
+    <string name="ok">OK</string>
+
+    <string name="error_first_name_empty">First name is empty</string>
+    <string name="error_last_name_empty">Last name is empty</string>
+    <string name="error_email_empty">Email is empty</string>
+    <string name="error_invalid_email">Invalid email address</string>
+    <string name="error_password_requirements">Password must contain at least 8 characters, one uppercase letter, one lowercase letter, one digit, one special character</string>
+    <string name="error_passwords_do_not_match">Passwords do not match</string>
+    <string name="error_accept_agreement">You must accept the user agreement</string>
 </resources>

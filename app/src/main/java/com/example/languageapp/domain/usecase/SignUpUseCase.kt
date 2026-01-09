@@ -1,29 +1,30 @@
 package com.example.languageapp.domain.usecase
 
+import com.example.languageapp.R
 import com.example.languageapp.domain.models.SignUpModel
 
 class SignUpUseCase {
-    fun checkDataForSignUpScreen(signUpModel: SignUpModel): String? {
+    fun checkDataForSignUpScreen(signUpModel: SignUpModel): Int? {
         if (signUpModel.firstName.isEmpty()) {
-            return "First name is empty"
+            return R.string.error_first_name_empty
         } else if (signUpModel.lastName.isEmpty()) {
-            return "Last name is empty"
+            return R.string.error_last_name_empty
         } else if (signUpModel.email.isEmpty()) {
-            return "Email is empty"
+            return R.string.error_email_empty
         } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(signUpModel.email).matches()) {
-            return "Invalid email address"
+            return R.string.error_invalid_email
         }
         return null
     }
 
-    fun checkDataForCreatePasswordScreen(signUpModel: SignUpModel): String? {
+    fun checkDataForCreatePasswordScreen(signUpModel: SignUpModel): Int? {
         val passwordRegex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9]).{8,}$".toRegex()
         if (!signUpModel.password.matches(passwordRegex)) {
-            return "Password must contain at least 8 characters, one uppercase letter, one lowercase letter, one digit, one special character"
+            return R.string.error_password_requirements
         } else if (signUpModel.password != signUpModel.confirmPassword) {
-            return "Passwords do not match"
+            return R.string.error_passwords_do_not_match
         } else if (!signUpModel.confirmUserAgreement) {
-            return "You must accept the user agreement"
+            return R.string.error_accept_agreement
         }
         return null
     }

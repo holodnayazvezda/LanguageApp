@@ -46,15 +46,15 @@ class SignUpScreenViewModel(
     }
 
     fun checkOnErrors(checkPassword: Boolean = false): Boolean {
-        val error = if (!checkPassword) {
+        val errorResId = if (!checkPassword) {
             signUpUseCase.checkDataForSignUpScreen(_signUpModel.value)
         } else {
             signUpUseCase.checkDataForCreatePasswordScreen(_signUpModel.value)
         }
-        val isError = error != null
+        val isError = errorResId != null
         _signUpModel.value = _signUpModel.value.copy(
             isError = isError,
-            errorText = error ?: ""
+            errorResId = errorResId
         )
         return isError
     }
@@ -62,7 +62,7 @@ class SignUpScreenViewModel(
     fun readError() {
         _signUpModel.value = _signUpModel.value.copy(
             isError = false,
-            errorText = ""
+            errorResId = null
         )
     }
 }

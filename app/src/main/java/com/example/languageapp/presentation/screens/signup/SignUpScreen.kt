@@ -15,8 +15,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.languageapp.R
 import com.example.languageapp.presentation.components.AppButton
 import com.example.languageapp.presentation.components.AppTextField
 import com.example.languageapp.presentation.components.InfoDialog
@@ -35,7 +37,7 @@ fun SignUpScreen(
     Scaffold(
         topBar = {
             ScreenDefaultTopAppBor(
-                title = "Signup",
+                title = stringResource(R.string.signup),
                 navigateToPreviousScreen = navigateBack
             )
         }
@@ -49,35 +51,35 @@ fun SignUpScreen(
         ) {
             Spacer(Modifier.height(40.dp))
             Text(
-                text = "Create an Account",
+                text = stringResource(R.string.create_account),
                 style = MaterialTheme.typography.titleMedium,
                 fontSize = 22.sp,
                 color = MaterialTheme.colorScheme.onBackground
             )
             Spacer(Modifier.height(30.dp))
             AppTextField(
-                name = "First Name",
-                placeholder = "Your First Name",
+                name = stringResource(R.string.first_name),
+                placeholder = stringResource(R.string.your_first_name),
                 onValueChange = { viewModel.updateData(firstName = it) },
                 value = signUpState.firstName
             )
             Spacer(Modifier.height(20.dp))
             AppTextField(
-                name = "Last Name",
-                placeholder = "Your Last Name",
+                name = stringResource(R.string.last_name),
+                placeholder = stringResource(R.string.your_last_name),
                 onValueChange = { viewModel.updateData(lastName = it) },
                 value = signUpState.lastName
             )
             Spacer(Modifier.height(20.dp))
             AppTextField(
-                name = "Email Address",
-                placeholder = "Email",
+                name = stringResource(R.string.email_address),
+                placeholder = stringResource(R.string.email),
                 onValueChange = { viewModel.updateData(email = it) },
                 value = signUpState.email,
             )
             Spacer(Modifier.height(30.dp))
             AppButton(
-                text = "Continue",
+                text = stringResource(R.string.continue_btn),
                 onClick = {
                     if (!viewModel.checkOnErrors()) {
                         navigateToCreatePasswordScreen()
@@ -87,14 +89,14 @@ fun SignUpScreen(
             Spacer(Modifier.height(25.dp))
             Row{
                 Text(
-                    text = "Already you member?",
+                    text = stringResource(R.string.already_member),
                     color = greyDark,
                     style = MaterialTheme.typography.titleSmall,
                     fontSize = 17.sp
                 )
                 Spacer(Modifier.width(5.dp))
                 Text(
-                    text = "Login",
+                    text = stringResource(R.string.login),
                     color = blue,
                     style = MaterialTheme.typography.titleMedium,
                     fontSize = 17.sp,
@@ -109,8 +111,8 @@ fun SignUpScreen(
     if (signUpState.isError) {
         InfoDialog(
             onConfirm = { viewModel.readError() },
-            title = "Error",
-            text = signUpState.errorText
+            title = stringResource(R.string.error),
+            text = signUpState.errorResId?.let { stringResource(it) } ?: ""
         )
     }
 }

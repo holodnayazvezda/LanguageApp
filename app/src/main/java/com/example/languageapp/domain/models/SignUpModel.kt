@@ -8,5 +8,5 @@ data class SignUpModel(
     val confirmPassword: String = "",
     val confirmUserAgreement: Boolean = false,
     val isError: Boolean = false,
-    val errorText: String = ""
+    val errorResId: Int? = null
 )
