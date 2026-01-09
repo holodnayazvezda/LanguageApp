@@ -18,7 +18,9 @@ class LanguageSelectViewModel(
     var selectedLanguage = _selectedLanguage.asStateFlow()
 
     fun setSelectedLanguage(language: String) {
-        _selectedLanguage.value = language
+        if (language == "en" || language == "ru") {
+            _selectedLanguage.value = language
+        }
     }
 
     fun setSelectedLanguageInAndroid() {

@@ -40,7 +40,7 @@ class AppStorage(
         set(value) = putString(ConfirmPassword, value)
 
     var confirmUserAgreement: Boolean
-        get() = getInteger(ConfirmUserAgreement) == 0
+        get() = getInteger(ConfirmUserAgreement) == 1
         set(value) = putInteger(ConfirmUserAgreement, if (value) 1 else 0)
 
 }
