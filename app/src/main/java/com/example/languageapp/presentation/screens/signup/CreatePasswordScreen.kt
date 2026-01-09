@@ -2,7 +2,6 @@ package com.example.languageapp.presentation.screens.signup
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -10,18 +9,13 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material3.Checkbox
-import androidx.compose.material3.CheckboxColors
 import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.SpanStyle
@@ -38,11 +32,10 @@ import com.example.languageapp.presentation.theme.greyDark
 @Composable
 fun CreatePasswordScreen(
     navigateBack: () -> Unit,
-    navigateToLogin: () -> Unit
+    navigateToLogin: () -> Unit,
+    viewModel: SignUpScreenViewModel
 ) {
-    var password by remember { mutableStateOf("") }
-    var confirmPassword by remember { mutableStateOf("") }
-    var confirmRules by remember { mutableStateOf(false) }
+    val signUpState = viewModel.signUpModel.collectAsState().value
 
     Scaffold(
         topBar = {
@@ -70,16 +63,16 @@ fun CreatePasswordScreen(
             AppTextField(
                 name = "Password",
                 placeholder = "●●●●●●●",
-                onValueChange = { password = it },
-                value = password,
+                onValueChange = { viewModel.updateData(password = it) },
+                value = signUpState.password,
                 isPassword = true
             )
             Spacer(Modifier.height(25.dp))
             AppTextField(
                 name = "Confirm Password",
                 placeholder = "●●●●●●●",
-                onValueChange = { confirmPassword = it },
-                value = confirmPassword,
+                onValueChange = { viewModel.updateData(confirmPassword = it) },
+                value = signUpState.confirmPassword,
                 isPassword = true
             )
             Spacer(Modifier.height(20.dp))
@@ -89,8 +82,8 @@ fun CreatePasswordScreen(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Checkbox(
-                        checked = confirmRules,
-                        onCheckedChange = {confirmRules = it},
+                        checked = signUpState.confirmUserAgreement,
+                        onCheckedChange = { viewModel.updateData(confirmUserAgreement = it) },
                         colors = CheckboxDefaults.colors(
                             checkedColor = blue,
                             uncheckedColor = blue
