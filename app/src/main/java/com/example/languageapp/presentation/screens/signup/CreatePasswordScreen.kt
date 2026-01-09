@@ -24,6 +24,7 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.languageapp.R
 import com.example.languageapp.presentation.components.AppButton
 import com.example.languageapp.presentation.components.AppTextField
@@ -94,16 +95,17 @@ fun CreatePasswordScreen(
                     )
                     Spacer(Modifier.width(5.dp))
                     val annotatedString = buildAnnotatedString {
-                        append(stringResource(R.string.i_have_made))
-                        append(" ")
                         withStyle(SpanStyle(color = blue)) {
-                            append(stringResource(R.string.the_rules))
+                            append(stringResource(R.string.i_have_made))
                         }
                     }
                     Text(
                         text = annotatedString,
                         style = MaterialTheme.typography.titleSmall,
-                        fontSize = 17.sp
+                        fontSize = 17.sp,
+                        modifier = Modifier.clickable {
+                            viewModel.openPdf(R.raw.policy, "policy.pdf")
+                        }
                     )
                 }
                 Row(Modifier.fillMaxWidth()) {
@@ -111,13 +113,16 @@ fun CreatePasswordScreen(
                         withStyle(SpanStyle(color = blue)) {
                             append(stringResource(R.string.the_rules))
                         }
-                        append(stringResource(R.string.accept_provisions))
+                        append(" " + stringResource(R.string.accept_provisions))
                     }
                     Spacer(Modifier.width(10.dp))
                     Text(
                         text = annotatedString,
                         style = MaterialTheme.typography.titleSmall,
-                        fontSize = 17.sp
+                        fontSize = 17.sp,
+                        modifier = Modifier.clickable {
+                            viewModel.openPdf(R.raw.policy, "policy.pdf")
+                        }
                     )
                 }
             }

@@ -3,12 +3,14 @@ package com.example.languageapp.presentation.screens.signup
 import androidx.lifecycle.ViewModel
 import com.example.languageapp.data.storage.AppStorage
 import com.example.languageapp.domain.models.SignUpModel
+import com.example.languageapp.domain.usecase.OpenRawPdfUseCase
 import com.example.languageapp.domain.usecase.SignUpUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
 class SignUpScreenViewModel(
     val appStorage: AppStorage,
+    val openRawPdfUseCase: OpenRawPdfUseCase,
     val signUpUseCase: SignUpUseCase = SignUpUseCase()
 ): ViewModel() {
     private var _signUpModel = MutableStateFlow(SignUpModel(
@@ -64,5 +66,9 @@ class SignUpScreenViewModel(
             isError = false,
             errorResId = null
         )
+    }
+
+    fun openPdf(rawResId: Int, fileName: String) {
+        openRawPdfUseCase(rawResId, fileName)
     }
 }
