@@ -7,5 +7,6 @@ enum class NavigationRoutes(
     ONBOARDING_SCREEN("onboarding"),
     LANGUAGE_SELECT_SCREEN("language_select"),
     SIGN_UP_SCREEN("sign_up_screen"),
+    CREATE_PASSWORD_SCREEN("create_password_screen"),
     LOG_IN_SCREEN("log_in_screen")
 }

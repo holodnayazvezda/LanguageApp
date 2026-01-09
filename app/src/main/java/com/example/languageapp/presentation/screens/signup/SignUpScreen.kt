@@ -24,12 +24,12 @@ import com.example.languageapp.presentation.components.AppButton
 import com.example.languageapp.presentation.components.AppTextField
 import com.example.languageapp.presentation.components.ScreenDefaultTopAppBor
 import com.example.languageapp.presentation.theme.blue
-import com.example.languageapp.presentation.theme.darkLighter
 import com.example.languageapp.presentation.theme.greyDark
 
 @Composable
 fun SignUpScreen(
-    navigateBack: () -> Unit
+    navigateBack: () -> Unit,
+    navigateToCreatePasswordScreen: () -> Unit
 ) {
     var firstName by remember { mutableStateOf("") }
     var lastName by remember { mutableStateOf("") }
@@ -48,7 +48,7 @@ fun SignUpScreen(
                 .background(MaterialTheme.colorScheme.background),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Spacer(Modifier.height(30.dp))
+            Spacer(Modifier.height(40.dp))
             Text(
                 text = "Create an Account",
                 style = MaterialTheme.typography.titleMedium,
@@ -74,12 +74,13 @@ fun SignUpScreen(
                 name = "Email Address",
                 placeholder = "Email",
                 onValueChange = { email = it },
-                value = email
+                value = email,
+                isPassword = true
             )
             Spacer(Modifier.height(30.dp))
             AppButton(
                 text = "Continue",
-                onClick = {}
+                onClick = navigateToCreatePasswordScreen
             )
             Spacer(Modifier.height(25.dp))
             Row{

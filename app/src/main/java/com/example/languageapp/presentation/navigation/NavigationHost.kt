@@ -8,6 +8,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.languageapp.presentation.screens.language_select.LanguageSelectScreen
 import com.example.languageapp.presentation.screens.login.LogInScreen
 import com.example.languageapp.presentation.screens.onboarding.OnboardingScreen
+import com.example.languageapp.presentation.screens.signup.CreatePasswordScreen
 import com.example.languageapp.presentation.screens.signup.SignUpScreen
 import com.example.languageapp.presentation.screens.splash.SplashScreen
 
@@ -49,7 +50,18 @@ fun NavigationHost(
         }
         composable(NavigationRoutes.SIGN_UP_SCREEN.route) {
             SignUpScreen(
-                navigateBack = { navController.navigate(NavigationRoutes.LOG_IN_SCREEN.route) }
+                navigateBack = { navController.navigate(NavigationRoutes.LOG_IN_SCREEN.route) },
+                navigateToCreatePasswordScreen = { navController.navigate(NavigationRoutes.CREATE_PASSWORD_SCREEN.route) }
+            )
+        }
+        composable(NavigationRoutes.CREATE_PASSWORD_SCREEN.route) {
+            CreatePasswordScreen(
+                navigateBack = {
+                    navController.popBackStack()
+                },
+                navigateToLogin = {
+                    navController.navigate(NavigationRoutes.LOG_IN_SCREEN.route)
+                }
             )
         }
         composable(NavigationRoutes.LOG_IN_SCREEN.route) {
