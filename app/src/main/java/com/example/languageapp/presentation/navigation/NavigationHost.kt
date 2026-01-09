@@ -6,7 +6,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.languageapp.presentation.screens.language_select.LanguageSelectScreen
+import com.example.languageapp.presentation.screens.login.LogInScreen
 import com.example.languageapp.presentation.screens.onboarding.OnboardingScreen
+import com.example.languageapp.presentation.screens.signup.SignUpScreen
 import com.example.languageapp.presentation.screens.splash.SplashScreen
 
 @Composable
@@ -35,8 +37,21 @@ fun NavigationHost(
         }
         composable(NavigationRoutes.LANGUAGE_SELECT_SCREEN.route) {
             LanguageSelectScreen(
-                navigateToNextScreen = {}
+                navigateToNextScreen = {
+//                    navController.navigate(NavigationRoutes.SIGN_UP_SCREEN.route) {
+//                        popUpTo(navController.graph.startDestinationId) {
+//                            inclusive = true
+//                        }
+//                        launchSingleTop = true
+//                    }
+                }
             )
+        }
+        composable(NavigationRoutes.SIGN_UP_SCREEN.route) {
+            SignUpScreen()
+        }
+        composable(NavigationRoutes.LOG_IN_SCREEN.route) {
+            LogInScreen()
         }
     }
 }
