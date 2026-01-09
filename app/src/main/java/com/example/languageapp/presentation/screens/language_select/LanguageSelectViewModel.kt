@@ -27,9 +27,7 @@ class LanguageSelectViewModel(
             localeManager.applicationLocales =
                 LocaleList.forLanguageTags(selectedLanguage.value)
         } else {
-            AppCompatDelegate.setApplicationLocales(
-                LocaleListCompat.forLanguageTags(selectedLanguage.value)
-            )
+           // TODO: UNREAL
         }
     }
 }
