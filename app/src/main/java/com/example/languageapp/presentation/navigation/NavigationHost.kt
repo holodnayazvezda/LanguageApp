@@ -38,17 +38,19 @@ fun NavigationHost(
         composable(NavigationRoutes.LANGUAGE_SELECT_SCREEN.route) {
             LanguageSelectScreen(
                 navigateToNextScreen = {
-//                    navController.navigate(NavigationRoutes.SIGN_UP_SCREEN.route) {
-//                        popUpTo(navController.graph.startDestinationId) {
-//                            inclusive = true
-//                        }
-//                        launchSingleTop = true
-//                    }
+                    navController.navigate(NavigationRoutes.SIGN_UP_SCREEN.route) {
+                        popUpTo(navController.graph.startDestinationId) {
+                            inclusive = true
+                        }
+                        launchSingleTop = true
+                    }
                 }
             )
         }
         composable(NavigationRoutes.SIGN_UP_SCREEN.route) {
-            SignUpScreen()
+            SignUpScreen(
+                navigateBack = { navController.navigate(NavigationRoutes.LOG_IN_SCREEN.route) }
+            )
         }
         composable(NavigationRoutes.LOG_IN_SCREEN.route) {
             LogInScreen()

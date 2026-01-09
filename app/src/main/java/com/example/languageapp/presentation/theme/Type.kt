@@ -15,6 +15,10 @@ val fredokaFontFamily = FontFamily(
 )
 
 val Typography = Typography(
+    titleSmall = TextStyle(
+        fontFamily = fredokaFontFamily,
+        fontWeight = FontWeight.Normal
+    ),
     titleMedium = TextStyle(
         fontFamily = fredokaFontFamily,
         fontWeight = FontWeight.Medium
