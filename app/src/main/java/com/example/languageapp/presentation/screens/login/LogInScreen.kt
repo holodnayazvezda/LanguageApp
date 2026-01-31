@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.sp
 import com.example.languageapp.R
 import com.example.languageapp.presentation.components.AppButton
 import com.example.languageapp.presentation.components.AppTextField
+import com.example.languageapp.presentation.components.InfoDialog
 import com.example.languageapp.presentation.components.ScreenDefaultTopAppBor
 import com.example.languageapp.presentation.theme.blue
 import com.example.languageapp.presentation.theme.greyDark
@@ -125,5 +126,13 @@ fun LogInScreen(
                 )
             }
         }
+    }
+
+    if (logInState.value.isError) {
+        InfoDialog(
+            onConfirm = { viewModel.readError() },
+            title = stringResource(R.string.error),
+            text = logInState.value.errorResId?.let { stringResource(it) } ?: ""
+        )
     }
 }
