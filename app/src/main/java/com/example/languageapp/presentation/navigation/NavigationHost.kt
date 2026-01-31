@@ -7,6 +7,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.languageapp.presentation.screens.language_select.LanguageSelectScreen
 import com.example.languageapp.presentation.screens.login.LogInScreen
+import com.example.languageapp.presentation.screens.login.LogInViewModel
+import com.example.languageapp.presentation.screens.main.MainScreen
 import com.example.languageapp.presentation.screens.onboarding.OnboardingScreen
 import com.example.languageapp.presentation.screens.signup.CreatePasswordScreen
 import com.example.languageapp.presentation.screens.signup.SignUpScreen
@@ -19,6 +21,7 @@ fun NavigationHost(
     navController: NavHostController = rememberNavController()
 ) {
     val signUpViewModel = koinViewModel<SignUpScreenViewModel>()
+    val logInViewModel = koinViewModel<LogInViewModel>()
     NavHost(
         navController = navController,
         startDestination = NavigationRoutes.SPLASH_SCREEN.route,
@@ -66,7 +69,29 @@ fun NavigationHost(
             )
         }
         composable(NavigationRoutes.LOG_IN_SCREEN.route) {
-            LogInScreen()
+            LogInScreen(
+                navigateBack = {
+                    navController.navigate(NavigationRoutes.LANGUAGE_SELECT_SCREEN.route) {
+                        popUpTo(navController.graph.startDestinationId) {
+                            inclusive = true
+                        }
+                        launchSingleTop = true
+                    }
+                },
+                navigateToMainScreen = {
+                    navController.navigate(NavigationRoutes.MAIN_SCREEN.route) {
+                        popUpTo(navController.graph.startDestinationId) {
+                            inclusive = true
+                        }
+                        launchSingleTop = true
+                    }
+                },
+                navigateToSignUp = {navController.navigate(NavigationRoutes.SIGN_UP_SCREEN.route)},
+                viewModel = logInViewModel
+            )
+        }
+        composable(NavigationRoutes.MAIN_SCREEN.route) {
+            MainScreen()
         }
     }
 }

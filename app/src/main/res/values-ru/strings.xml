@@ -44,6 +44,7 @@
     <string name="error_last_name_empty">Фамилия не может быть пустой</string>
     <string name="error_email_empty">Email не может быть пустым</string>
     <string name="error_invalid_email">Некорректный адрес электронной почты</string>
+    <string name="error_password_empty">Пароль не может быть пустым</string>
     <string name="error_password_requirements">Пароль должен содержать не менее 8 символов, одну заглавную букву, одну строчную букву, одну цифру и один спецсимвол</string>
     <string name="error_passwords_do_not_match">Пароли не совпадают</string>
     <string name="error_accept_agreement">Вы должны принять пользовательское соглашение</string>

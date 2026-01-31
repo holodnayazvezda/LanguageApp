@@ -1,6 +1,7 @@
 package com.example.languageapp.presentation.di
 
 import com.example.languageapp.presentation.screens.language_select.LanguageSelectViewModel
+import com.example.languageapp.presentation.screens.login.LogInViewModel
 import com.example.languageapp.presentation.screens.onboarding.OnboardingScreenViewModel
 import com.example.languageapp.presentation.screens.signup.SignUpScreenViewModel
 import org.koin.dsl.module
@@ -23,5 +24,9 @@ val presentationModule = module {
             appStorage = get(),
             openRawPdfUseCase = get()
         )
+    }
+
+    single {
+        LogInViewModel()
     }
 }

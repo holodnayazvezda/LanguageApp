@@ -44,6 +44,7 @@
     <string name="error_last_name_empty">Last name is empty</string>
     <string name="error_email_empty">Email is empty</string>
     <string name="error_invalid_email">Invalid email address</string>
+    <string name="error_password_empty">Password is empty</string>
     <string name="error_password_requirements">Password must contain at least 8 characters, one uppercase letter, one lowercase letter, one digit, one special character</string>
     <string name="error_passwords_do_not_match">Passwords do not match</string>
     <string name="error_accept_agreement">You must accept the user agreement</string>

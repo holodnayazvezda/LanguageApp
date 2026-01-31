@@ -31,9 +31,9 @@ fun ScreenDefaultTopAppBor(
     navigateToPreviousScreen: (() -> Unit)?
 ) {
     Column (
-        modifier = Modifier.fillMaxWidth().height(120.dp).background(deepBlue)
+        modifier = Modifier.fillMaxWidth().height(100.dp).background(deepBlue)
     ) {
-        Spacer(Modifier.height(40.dp))
+        Spacer(Modifier.height(30.dp))
         Box(
             Modifier.fillMaxSize()
         ) {
