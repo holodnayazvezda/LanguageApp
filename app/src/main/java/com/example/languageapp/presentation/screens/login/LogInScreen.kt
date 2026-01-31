@@ -44,7 +44,7 @@ fun LogInScreen(
     Scaffold(
         topBar = {
             ScreenDefaultTopAppBor(
-                title = "Login",
+                title = stringResource(R.string.login),
                 navigateToPreviousScreen = navigateBack
             )
         }
@@ -65,7 +65,7 @@ fun LogInScreen(
             )
             Spacer(Modifier.height(12.dp))
             Text(
-                text = "For free, join now and\nstart learning",
+                text = stringResource(R.string.login_subtitle),
                 style = MaterialTheme.typography.titleMedium,
                 fontSize = 22.sp,
                 color = MaterialTheme.colorScheme.onBackground,
@@ -73,8 +73,8 @@ fun LogInScreen(
             )
             Spacer(Modifier.height(35.dp))
             AppTextField(
-                name = "Email Address",
-                placeholder = "Email",
+                name = stringResource(R.string.email_address),
+                placeholder = stringResource(R.string.email),
                 onValueChange = { viewModel.updateData(email = it) },
                 value = logInState.value.email,
                 isPassword = false
@@ -82,7 +82,7 @@ fun LogInScreen(
             Spacer(Modifier.height(25.dp))
             AppTextField(
                 name = stringResource(R.string.password),
-                placeholder = "●●●●●●●",
+                placeholder = stringResource(R.string.password_placeholder),
                 onValueChange = { viewModel.updateData(password = it) },
                 value = logInState.value.password,
                 isPassword = true
@@ -90,7 +90,7 @@ fun LogInScreen(
             Spacer(Modifier.height(12.dp))
             Column(Modifier.fillMaxWidth()) {
                 Text(
-                    text = "Forgot password",
+                    text = stringResource(R.string.forgot_password),
                     style = MaterialTheme.typography.titleSmall,
                     fontSize = 15.sp,
                     color = red
@@ -98,7 +98,7 @@ fun LogInScreen(
             }
             Spacer(Modifier.height(32.dp))
             AppButton(
-                text = "Login",
+                text = stringResource(R.string.login),
                 onClick = {
                     if (!viewModel.checkOnErrors()) {
                         navigateToMainScreen()
@@ -108,14 +108,14 @@ fun LogInScreen(
             Spacer(Modifier.height(30.dp))
             Row{
                 Text(
-                    text = "Not you member?",
+                    text = stringResource(R.string.not_a_member),
                     color = greyDark,
                     style = MaterialTheme.typography.titleSmall,
                     fontSize = 17.sp
                 )
                 Spacer(Modifier.width(3.dp))
                 Text(
-                    text = "Signup",
+                    text = stringResource(R.string.signup),
                     color = blue,
                     style = MaterialTheme.typography.titleMedium,
                     fontSize = 17.sp,

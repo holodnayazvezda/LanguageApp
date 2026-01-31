@@ -48,4 +48,9 @@
     <string name="error_password_requirements">Пароль должен содержать не менее 8 символов, одну заглавную букву, одну строчную букву, одну цифру и один спецсимвол</string>
     <string name="error_passwords_do_not_match">Пароли не совпадают</string>
     <string name="error_accept_agreement">Вы должны принять пользовательское соглашение</string>
+
+    <string name="login_subtitle">Бесплатно присоединяйтесь и\nначните учиться</string>
+    <string name="password_placeholder">●●●●●●●</string>
+    <string name="forgot_password">Забыли пароль</string>
+    <string name="not_a_member">Нет аккаунта?</string>
 </resources>

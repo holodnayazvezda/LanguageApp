@@ -48,4 +48,9 @@
     <string name="error_password_requirements">Password must contain at least 8 characters, one uppercase letter, one lowercase letter, one digit, one special character</string>
     <string name="error_passwords_do_not_match">Passwords do not match</string>
     <string name="error_accept_agreement">You must accept the user agreement</string>
+
+    <string name="login_subtitle">For free, join now and\nstart learning</string>
+    <string name="password_placeholder">●●●●●●●</string>
+    <string name="forgot_password">Forgot password</string>
+    <string name="not_a_member">Not you member?</string>
 </resources>
