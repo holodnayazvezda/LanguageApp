@@ -16,7 +16,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.languageapp.R
 import com.example.languageapp.presentation.components.AppButton
 import com.example.languageapp.presentation.components.ProfileScreenTopAppBar
 import com.example.languageapp.presentation.theme.ultraLightGrey
@@ -44,7 +46,7 @@ fun ProfileScreen(
     if (themePreference != 0) {
         isSystemInDarkTheme = themePreference == 1
     }
-    val buttonTextPrefix = if (isSystemInDarkTheme) "Light" else "Dark"
+    val buttonText = if (isSystemInDarkTheme) stringResource(R.string.switch_to_light) else stringResource(R.string.switch_to_dark)
 
     Scaffold(
         topBar = {
@@ -56,26 +58,26 @@ fun ProfileScreen(
             verticalArrangement = Arrangement.Bottom
         ) {
             AppButton(
-                text = "Switch to $buttonTextPrefix",
+                text = buttonText,
                 onClick = {
                     viewModel.changeTheme(isSystemInDarkTheme)
                 }
             )
             Spacer(Modifier.height(10.dp))
             AppButton(
-                text = "Change mother language",
+                text = stringResource(R.string.change_mother_language),
                 onClick = navigateToChangeLanguage
             )
             Spacer(Modifier.height(10.dp))
             AppButton(
-                text = "Change your image",
+                text = stringResource(R.string.change_your_image),
                 onClick = {
                     launcher.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
                 }
             )
             Spacer(Modifier.height(10.dp))
             AppButton(
-                text = "Logout",
+                text = stringResource(R.string.logout),
                 onClick = {},
                 background = ultraLightGrey
             )

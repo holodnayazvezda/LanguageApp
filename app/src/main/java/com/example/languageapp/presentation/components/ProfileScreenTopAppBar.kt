@@ -16,8 +16,10 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.languageapp.R
 import com.example.languageapp.presentation.screens.profile.ProfileScreenViewModel
 import com.example.languageapp.presentation.theme.deepBlue
 import com.example.languageapp.presentation.theme.white
@@ -40,7 +42,7 @@ fun ProfileScreenTopAppBar(
         )
         Spacer(Modifier.height(5.dp))
         Text(
-            text = "Your profile, $name",
+            text = stringResource(R.string.your_profile, name ?: ""),
             style = MaterialTheme.typography.titleMedium,
             fontSize = 22.sp,
             color = white

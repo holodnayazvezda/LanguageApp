@@ -53,4 +53,14 @@
     <string name="password_placeholder">●●●●●●●</string>
     <string name="forgot_password">Забыли пароль</string>
     <string name="not_a_member">Нет аккаунта?</string>
+
+    <string name="switch_to_light">Переключить на Светлую</string>
+    <string name="switch_to_dark">Переключить на Темную</string>
+    <string name="change_mother_language">Изменить родной язык</string>
+    <string name="change_your_image">Изменить изображение профиля</string>
+    <string name="logout">Выйти</string>
+
+    <string name="your_profile">Ваш профиль, %1$s</string>
+    <string name="hello_user">Привет, %1$s</string>
+    <string name="ready_for_learning">Вы готовы к обучению сегодня?</string>
 </resources>

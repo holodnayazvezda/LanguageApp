@@ -16,9 +16,11 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.paint
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
+import com.example.languageapp.R
 import com.example.languageapp.presentation.theme.deepBlue
 import com.example.languageapp.presentation.theme.greyDark
 import com.example.languageapp.presentation.theme.lightGrey
@@ -48,14 +50,14 @@ fun ScreenMainTopAppBar(
         )
         Spacer(Modifier.height(5.dp))
         Text(
-            text = "Hello, ${name.value}",
+            text = stringResource(R.string.hello_user, name.value ?: ""),
             style = MaterialTheme.typography.titleMedium,
             fontSize = 22.sp,
             color = white
         )
         Spacer(Modifier.height(5.dp))
         Text(
-            text = "Are you ready for learning today?",
+            text = stringResource(R.string.ready_for_learning),
             style = MaterialTheme.typography.titleMedium,
             fontSize = 17.sp,
             color = lightGrey
