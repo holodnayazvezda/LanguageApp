@@ -48,6 +48,7 @@ val presentationModule = module {
     single {
         ProfileScreenViewModel(
             imageUseCase = get(),
+            appStorage = get(),
             context = get()
         )
     }

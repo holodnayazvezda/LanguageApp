@@ -7,8 +7,12 @@ import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
+import com.example.languageapp.data.storage.AppStorage
+import org.koin.compose.koinInject
 
 private val DarkColorScheme = darkColorScheme(
     background = dark,
@@ -33,17 +37,25 @@ fun LanguageAppTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
+    val appStorage: AppStorage = koinInject()
+    val themePreference by appStorage.isSystemInDarkThemeFlow.collectAsState()
+
+    val isDark = when (themePreference) {
+        1 -> true
+        -1 -> false
+        else -> darkTheme
+    }
+
     val colorScheme = when {
-        darkTheme -> DarkColorScheme
+        isDark -> DarkColorScheme
         else -> LightColorScheme
     }
 
-//    делаем иконки в status bar светлыми
     val view = LocalView.current
     if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
-            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = false
+            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = !isDark
         }
     }
 

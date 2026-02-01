@@ -1,6 +1,7 @@
 package com.example.languageapp.data.storage
 
 import android.content.Context
+import androidx.core.content.edit
 
 open class Storage(
     context: Context,
@@ -16,7 +17,7 @@ open class Storage(
     }
 
     fun putString(key: String, value: String?) {
-        sharedPreferences.edit().putString(key, value).apply()
+        sharedPreferences.edit { putString(key, value) }
     }
 
     fun getInteger(key: String): Int {
@@ -24,6 +25,16 @@ open class Storage(
     }
 
     fun putInteger(key: String, value: Int) {
-        sharedPreferences.edit().putInt(key, value).apply()
+        sharedPreferences.edit { putInt(key, value) }
+    }
+
+    fun getBoolean(key: String): Boolean {
+        return sharedPreferences.getBoolean(key, false)
+    }
+
+    fun putBoolean(key: String, value: Boolean) {
+        sharedPreferences.edit {
+            putBoolean(key, value)
+        }
     }
 }
