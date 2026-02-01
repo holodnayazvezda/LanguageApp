@@ -18,28 +18,28 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.languageapp.presentation.components.AppButton
-import com.example.languageapp.presentation.components.profile_screen_top_app_bar.ProfileScreenTopAppBar
+import com.example.languageapp.presentation.components.ProfileScreenTopAppBar
 import com.example.languageapp.presentation.theme.ultraLightGrey
 
 @Composable
 fun ProfileScreen(
     navigateToChangeLanguage: () -> Unit,
     navigateToChooseImage: () -> Unit,
-    profileScreenViewModel: ProfileScreenViewModel
+    viewModel: ProfileScreenViewModel
 ) {
     val launcher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.PickVisualMedia()
     ) { uri: Uri? ->
         uri?.let {
-            val selectedBitmap = profileScreenViewModel.imageUseCase.uriToBitmap( it)
+            val selectedBitmap = viewModel.imageUseCase.uriToBitmap( it)
             if (selectedBitmap != null) {
-                profileScreenViewModel.imageToCrop = selectedBitmap
+                viewModel.imageToCrop = selectedBitmap
                 navigateToChooseImage()
             }
         }
     }
 
-    val themePreference by profileScreenViewModel.appStorage.isSystemInDarkThemeFlow.collectAsState()
+    val themePreference by viewModel.appStorage.isSystemInDarkThemeFlow.collectAsState()
     var isSystemInDarkTheme = isSystemInDarkTheme()
     if (themePreference != 0) {
         isSystemInDarkTheme = themePreference == 1
@@ -48,7 +48,7 @@ fun ProfileScreen(
 
     Scaffold(
         topBar = {
-            ProfileScreenTopAppBar(profileScreenViewModel)
+            ProfileScreenTopAppBar(viewModel)
         }
     ) { paddingValues ->
         Column(
@@ -58,7 +58,7 @@ fun ProfileScreen(
             AppButton(
                 text = "Switch to $buttonTextPrefix",
                 onClick = {
-                    profileScreenViewModel.changeTheme(isSystemInDarkTheme)
+                    viewModel.changeTheme(isSystemInDarkTheme)
                 }
             )
             Spacer(Modifier.height(10.dp))

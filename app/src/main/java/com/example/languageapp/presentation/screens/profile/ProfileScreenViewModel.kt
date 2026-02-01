@@ -10,6 +10,8 @@ import androidx.lifecycle.ViewModel
 import com.example.languageapp.R
 import com.example.languageapp.data.storage.AppStorage
 import com.example.languageapp.domain.usecase.ImageUseCase
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 
 class ProfileScreenViewModel(
     val imageUseCase: ImageUseCase,
@@ -17,6 +19,12 @@ class ProfileScreenViewModel(
     context: Context
 ): ViewModel() {
     var imageToCrop by mutableStateOf<Bitmap>(BitmapFactory.decodeResource(context.resources, R.drawable.sample_ava))
+    private var _userFirstName = MutableStateFlow("")
+    val userFirstName = _userFirstName.asStateFlow()
+
+    init {
+        _userFirstName.value = appStorage.firstName.toString()
+    }
 
     fun changeTheme(isSystemInDarkTheme: Boolean) {
         appStorage.isSystemInDarkTheme = if (isSystemInDarkTheme) -1 else 1

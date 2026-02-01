@@ -16,7 +16,7 @@ import com.example.languageapp.presentation.screens.main.MainScreen
 import com.example.languageapp.presentation.screens.onboarding.OnboardingScreen
 import com.example.languageapp.presentation.screens.profile.ProfileScreen
 import com.example.languageapp.presentation.screens.profile.ProfileScreenViewModel
-import com.example.languageapp.presentation.screens.profile.choose_image.ChooseImageScreen
+import com.example.languageapp.presentation.screens.profile.ChooseImageScreen
 import com.example.languageapp.presentation.screens.signup.CreatePasswordScreen
 import com.example.languageapp.presentation.screens.signup.SignUpScreen
 import com.example.languageapp.presentation.screens.signup.SignUpScreenViewModel
@@ -123,7 +123,7 @@ fun NavigationHost(
             ProfileScreen(
                 navigateToChangeLanguage = { navController.navigate(NavigationRoutes.LANGUAGE_SELECT_SCREEN.route) },
                 navigateToChooseImage = { navController.navigate(NavigationRoutes.CHOOSE_IMAGE.route) },
-                profileScreenViewModel = profileScreenViewModel
+                viewModel = profileScreenViewModel
             )
         }
         composable(NavigationRoutes.CHOOSE_IMAGE.route) {

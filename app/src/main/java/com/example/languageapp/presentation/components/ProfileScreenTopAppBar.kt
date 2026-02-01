@@ -1,4 +1,4 @@
-package com.example.languageapp.presentation.components.profile_screen_top_app_bar
+package com.example.languageapp.presentation.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -26,7 +26,7 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun ProfileScreenTopAppBar(
     profileScreenViewModel: ProfileScreenViewModel,
-    viewModel: ProfileScreenTopAppBarViewModel = koinViewModel(),
+    viewModel: ProfileScreenViewModel = koinViewModel(),
 ) {
     val name = viewModel.userFirstName.collectAsState().value
     Column(

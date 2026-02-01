@@ -1,6 +1,5 @@
 package com.example.languageapp.presentation.di
 
-import com.example.languageapp.presentation.components.profile_screen_top_app_bar.ProfileScreenTopAppBarViewModel
 import com.example.languageapp.presentation.components.screen_main_top_app_bar.ScreenMainTopAppBarViewModel
 import com.example.languageapp.presentation.screens.language_select.LanguageSelectViewModel
 import com.example.languageapp.presentation.screens.login.LogInViewModel
@@ -35,12 +34,6 @@ val presentationModule = module {
 
     single {
         ScreenMainTopAppBarViewModel(
-            appStorage = get()
-        )
-    }
-
-    single {
-        ProfileScreenTopAppBarViewModel(
             appStorage = get()
         )
     }

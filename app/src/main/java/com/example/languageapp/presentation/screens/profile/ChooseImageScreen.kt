@@ -1,10 +1,5 @@
-package com.example.languageapp.presentation.screens.profile.choose_image
+package com.example.languageapp.presentation.screens.profile
 
-import android.graphics.BitmapFactory
-import android.net.Uri
-import androidx.activity.compose.rememberLauncherForActivityResult
-import androidx.activity.result.PickVisualMediaRequest
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -21,7 +16,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.languageapp.presentation.components.AppButton
-import com.example.languageapp.presentation.screens.profile.ProfileScreenViewModel
 import com.example.languageapp.presentation.theme.deepBlue
 import com.example.languageapp.presentation.theme.ultraLightGrey
 import com.example.languageapp.presentation.theme.white
