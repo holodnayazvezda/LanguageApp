@@ -88,4 +88,6 @@ dependencies {
     // coil (подгрузка изображений)
     implementation(libs.coil.compose)
     implementation(libs.coil.network.okhttp)
+    // image cropper
+    implementation("io.github.rroohit:ImageCropView:3.1.1")
 }

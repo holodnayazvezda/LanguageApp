@@ -9,5 +9,11 @@ enum class NavigationRoutes(
     SIGN_UP_SCREEN("sign_up_screen"),
     CREATE_PASSWORD_SCREEN("create_password_screen"),
     LOG_IN_SCREEN("log_in_screen"),
-    MAIN_SCREEN("main_screen")
+    MAIN_SCREEN("main_screen"),
+    AUDITION_EXERCISE("audition"),
+    GAME_EXERCISE("game"),
+    GUESS_ANIMAL_EXERCISE("guess_animal"),
+    WORD_PRACTICE_EXERCISE("word_practice"),
+    PROFILE("profile"),
+    CHOOSE_IMAGE("choose_image")
 }

@@ -24,14 +24,15 @@ import com.example.languageapp.presentation.theme.white
 @Composable
 fun AppButton(
     text: String,
-    onClick: () -> Unit
+    onClick: () -> Unit,
+    background: Color = blue
 ) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
             .height(56.dp)
             .clip(RoundedCornerShape(15.dp))
-            .background(blue)
+            .background(background)
             .drawBehind {
                 drawRoundRect(
                     brush = Brush.verticalGradient(

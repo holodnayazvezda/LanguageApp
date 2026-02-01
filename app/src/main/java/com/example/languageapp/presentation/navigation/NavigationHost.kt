@@ -5,11 +5,18 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.languageapp.presentation.screens.exercises.audition_exercise.AuditionExercise
+import com.example.languageapp.presentation.screens.exercises.game_exercise.GameExercise
+import com.example.languageapp.presentation.screens.exercises.guess_animal_exercise.GuessAnimalExercise
+import com.example.languageapp.presentation.screens.exercises.word_practice_exercise.WordPracticeExercise
 import com.example.languageapp.presentation.screens.language_select.LanguageSelectScreen
 import com.example.languageapp.presentation.screens.login.LogInScreen
 import com.example.languageapp.presentation.screens.login.LogInViewModel
 import com.example.languageapp.presentation.screens.main.MainScreen
 import com.example.languageapp.presentation.screens.onboarding.OnboardingScreen
+import com.example.languageapp.presentation.screens.profile.ProfileScreen
+import com.example.languageapp.presentation.screens.profile.ProfileScreenViewModel
+import com.example.languageapp.presentation.screens.profile.choose_image.ChooseImageScreen
 import com.example.languageapp.presentation.screens.signup.CreatePasswordScreen
 import com.example.languageapp.presentation.screens.signup.SignUpScreen
 import com.example.languageapp.presentation.screens.signup.SignUpScreenViewModel
@@ -22,6 +29,7 @@ fun NavigationHost(
 ) {
     val signUpViewModel = koinViewModel<SignUpScreenViewModel>()
     val logInViewModel = koinViewModel<LogInViewModel>()
+    val profileScreenViewModel = koinViewModel<ProfileScreenViewModel>()
     NavHost(
         navController = navController,
         startDestination = NavigationRoutes.SPLASH_SCREEN.route,
@@ -91,7 +99,38 @@ fun NavigationHost(
             )
         }
         composable(NavigationRoutes.MAIN_SCREEN.route) {
-            MainScreen()
+            MainScreen(
+                navigateToProfile = { navController.navigate(NavigationRoutes.PROFILE.route) },
+                navigateToGuessAnimalExercise = { navController.navigate(NavigationRoutes.GUESS_ANIMAL_EXERCISE.route) },
+                navigateToWordPracticeExercise = { navController.navigate(NavigationRoutes.WORD_PRACTICE_EXERCISE.route) },
+                navigateToAuditionExercise = { navController.navigate(NavigationRoutes.AUDITION_EXERCISE.route) },
+                navigateToGameExercise = { navController.navigate(NavigationRoutes.GAME_EXERCISE.route) }
+            )
+        }
+        composable(NavigationRoutes.GAME_EXERCISE.route) {
+            GameExercise()
+        }
+        composable(NavigationRoutes.AUDITION_EXERCISE.route) {
+            AuditionExercise()
+        }
+        composable(NavigationRoutes.GUESS_ANIMAL_EXERCISE.route) {
+            GuessAnimalExercise()
+        }
+        composable(NavigationRoutes.WORD_PRACTICE_EXERCISE.route) {
+            WordPracticeExercise()
+        }
+        composable(NavigationRoutes.PROFILE.route) {
+            ProfileScreen(
+                navigateToChangeLanguage = { navController.navigate(NavigationRoutes.LANGUAGE_SELECT_SCREEN.route) },
+                navigateToChooseImage = { navController.navigate(NavigationRoutes.CHOOSE_IMAGE.route) },
+                profileScreenViewModel = profileScreenViewModel
+            )
+        }
+        composable(NavigationRoutes.CHOOSE_IMAGE.route) {
+            ChooseImageScreen(
+                profileScreenViewModel = profileScreenViewModel,
+                navigateBack = { navController.popBackStack() }
+            )
         }
     }
 }
