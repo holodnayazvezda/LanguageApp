@@ -19,6 +19,8 @@ ksp = "2.2.21-2.0.4"
 koinAnnotation = "2.3.1"
 coil = "3.3.0"
 uiVersion = "1.10.0"
+tensorflowLite = "2.16.1"
+tensorflowLiteSupport = "0.4.4"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -58,11 +60,18 @@ koin-ksp-bom = { module = "io.insert-koin:koin-annotations-bom", version.ref = "
 coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil" }
 coil-network-okhttp = { module = "io.coil-kt.coil3:coil-network-okhttp", version.ref = "coil" }
 ui = { group = "androidx.compose.ui", name = "ui", version.ref = "uiVersion" }
+# tensorflow
+tensorflow-lite = { module = "org.tensorflow:tensorflow-lite", version.ref = "tensorflowLite" }
+tensorflow-lite-support = { module = "org.tensorflow:tensorflow-lite-support", version.ref = "tensorflowLiteSupport" }
+tensorflow-lite-gpu = { module = "org.tensorflow:tensorflow-lite-gpu", version.ref = "tensorflowLite" }
+
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 googleKsp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+
 
 [bundles]
 retrofit = [

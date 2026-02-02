@@ -15,9 +15,11 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil3.compose.AsyncImage
+import com.example.languageapp.R
 import com.example.languageapp.presentation.components.AppButton
 import com.example.languageapp.presentation.components.AppTextField
 import com.example.languageapp.presentation.components.GameTopAppBar
@@ -36,7 +38,7 @@ fun GuessAnimalExercise(
         topBar = {
             GameTopAppBar(
                 navigateBack = navigateToMainScreen,
-                title = "Guess the animal",
+                title = stringResource(R.string.guess_animal_title),
                 background = deepBlue
             )
         }
@@ -56,14 +58,14 @@ fun GuessAnimalExercise(
             )
             Spacer(Modifier.height(17.dp))
             AppTextField(
-                name = "Write who is on image",
+                name = stringResource(R.string.write_who_is_on_image),
                 placeholder = "",
                 onValueChange = { viewModel.updateAnimalName(it) },
                 value = animalName
             )
             Spacer(Modifier.height(17.dp))
             AppButton(
-                text = "Check",
+                text = stringResource(R.string.btn_check),
                 onClick = {
                     if (viewModel.isCorrect()) {
                         navigateToCorrectAnswerScreen()

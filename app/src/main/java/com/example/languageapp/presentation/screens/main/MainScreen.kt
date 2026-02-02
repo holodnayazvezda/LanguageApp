@@ -18,6 +18,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -54,7 +55,7 @@ fun MainScreen(
         ) {
             Spacer(Modifier.height(10.dp))
             Text(
-                text = "Top users",
+                text = stringResource(R.string.top_users),
                 style = MaterialTheme.typography.titleMedium,
                 fontSize = 20.sp,
                 color = MaterialTheme.colorScheme.onBackground
@@ -70,7 +71,7 @@ fun MainScreen(
             }
             Spacer(Modifier.height(10.dp))
             Text(
-                text = "Available excersises",
+                text = stringResource(R.string.available_exercises),
                 color = MaterialTheme.colorScheme.onBackground,
                 style = MaterialTheme.typography.titleMedium,
                 fontSize = 20.sp,
@@ -82,13 +83,13 @@ fun MainScreen(
                 Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
                     ExerciseCard(
                         imageResId = R.drawable.panda,
-                        name = "Guess the animal",
+                        name = stringResource(R.string.exercise_guess_animal),
                         backgroundColor = blue,
                         onClick = navigateToGuessAnimalExercise
                     )
                     ExerciseCard(
                         imageResId = R.drawable.pencil,
-                        name = "Word practice",
+                        name = stringResource(R.string.exercise_word_practice),
                         backgroundColor = red,
                         onClick = navigateToWordPracticeExercise
                     )
@@ -97,13 +98,13 @@ fun MainScreen(
                     Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
                     ExerciseCard(
                         imageResId = R.drawable.volume,
-                        name = "Audition",
+                        name = stringResource(R.string.exercise_audition),
                         backgroundColor = orange,
                         onClick = navigateToAuditionExercise
                     )
                     ExerciseCard(
                         imageResId = R.drawable.gamepad,
-                        name = "Game",
+                        name = stringResource(R.string.exercise_game),
                         backgroundColor = green,
                         navigateToGameExercise
                     )

@@ -90,4 +90,11 @@ dependencies {
     implementation(libs.coil.network.okhttp)
     // image cropper
     implementation("io.github.rroohit:ImageCropView:3.1.1")
+    // glance для виджетов
+    implementation("androidx.glance:glance-appwidget:1.1.1")
+    implementation("androidx.glance:glance-material3:1.1.1")
+    // tensorflow
+    implementation(libs.tensorflow.lite)
+    implementation(libs.tensorflow.lite.gpu)
+    implementation(libs.tensorflow.lite.support)
 }

@@ -63,4 +63,34 @@
     <string name="your_profile">Ваш профиль, %1$s</string>
     <string name="hello_user">Привет, %1$s</string>
     <string name="ready_for_learning">Вы готовы к обучению сегодня?</string>
+
+    <!-- Main Screen -->
+    <string name="top_users">Топ пользователей</string>
+    <string name="available_exercises">Доступные упражнения</string>
+    <string name="exercise_guess_animal">Угадай животное</string>
+    <string name="exercise_word_practice">Практика слов</string>
+    <string name="exercise_audition">Аудирование</string>
+    <string name="exercise_game">Игра</string>
+
+    <!-- Audition Exercise -->
+    <string name="listening_title">Аудирование</string>
+    <string name="audition_instructions">Нажмите кнопку и произнесите слово.\nНаш сервис проверит\nваше произношение</string>
+    <string name="check_my_speech">Проверить речь</string>
+    <string name="your_result">Ваш результат</string>
+    <string name="yay_go_next">Ура! Дальше</string>
+
+    <!-- Guess Animal Exercise -->
+    <string name="guess_animal_title">Угадай животное</string>
+    <string name="write_who_is_on_image">Напишите, кто на картинке</string>
+    <string name="btn_check">Проверить</string>
+    <string name="btn_try_again">Попробовать снова</string>
+
+    <!-- Word Practice Exercise -->
+    <string name="word_practice_title">Практика слов</string>
+    <string name="btn_next_exercise">Далее</string>
+
+    <!-- Correct/Wrong Answer Screens -->
+    <string name="holy_molly">Святые угодники! Это верно!</string>
+    <string name="wrong_answer">А? Неправильный ответ :(</string>
+    <string name="that_is">Это: %1$s</string>
 </resources>

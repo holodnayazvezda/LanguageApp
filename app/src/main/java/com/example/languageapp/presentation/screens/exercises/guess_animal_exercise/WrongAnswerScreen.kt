@@ -16,6 +16,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.capitalize
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.dp
@@ -36,7 +37,7 @@ fun WrongAnswerScreen(
         topBar = {
             GameTopAppBar(
                 navigateBack = navigateToMainScreen,
-                title = "Guess the animal",
+                title = stringResource(R.string.guess_animal_title),
                 background = red
             )
         }
@@ -57,21 +58,21 @@ fun WrongAnswerScreen(
             )
             Spacer(Modifier.height(40.dp))
             Text(
-                text = "Eh? Wrong answer :(",
+                text = stringResource(R.string.wrong_answer),
                 color = MaterialTheme.colorScheme.onBackground,
                 style = MaterialTheme.typography.titleMedium,
                 fontSize = 20.sp
             )
             Spacer(Modifier.height(3.dp))
             Text(
-                text = "That is: ${animalToGuess.name.capitalize(Locale.current)}",
+                text = stringResource(R.string.that_is, animalToGuess.name.capitalize(Locale.current)),
                 color = MaterialTheme.colorScheme.onBackground,
                 style = MaterialTheme.typography.titleMedium,
                 fontSize = 20.sp
             )
             Spacer(Modifier.height(18.dp))
             AppButton(
-                text = "Next",
+                text = stringResource(R.string.btn_next_exercise),
                 onClick = {
                     viewModel.updateAnimal()
                     navigateToGuessAnimal()
@@ -79,7 +80,7 @@ fun WrongAnswerScreen(
             )
             Spacer(Modifier.height(10.dp))
             AppButton(
-                text = "Try again",
+                text = stringResource(R.string.btn_try_again),
                 onClick = { navigateToGuessAnimal() }
             )
         }

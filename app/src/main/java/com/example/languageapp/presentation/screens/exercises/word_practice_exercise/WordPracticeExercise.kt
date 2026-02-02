@@ -14,8 +14,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.languageapp.R
 import com.example.languageapp.presentation.components.AppButton
 import com.example.languageapp.presentation.components.GameTopAppBar
 import com.example.languageapp.presentation.theme.blue
@@ -37,7 +39,7 @@ fun WordPracticeExercise(
         topBar = {
             GameTopAppBar(
                 navigateBack = navigateToMainScreen,
-                title = "Word practice",
+                title = stringResource(R.string.word_practice_title),
                 background = deepBlue
             )
         }
@@ -93,7 +95,7 @@ fun WordPracticeExercise(
             }
             Column(Modifier.fillMaxSize(), verticalArrangement = Arrangement.Bottom) {
                 AppButton(
-                    text = if (checkResult == 0) "Check" else "Next",
+                    text = if (checkResult == 0) stringResource(R.string.btn_check) else stringResource(R.string.btn_next_exercise),
                     onClick = {
                         if (checkResult == 0) {
                             viewModel.check()

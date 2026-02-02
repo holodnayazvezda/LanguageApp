@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.languageapp.presentation.screens.exercises.audition_exercise.AuditionExercise
+import com.example.languageapp.presentation.screens.exercises.audition_exercise.AuditionExerciseViewModel
 import com.example.languageapp.presentation.screens.exercises.game_exercise.GameExercise
 import com.example.languageapp.presentation.screens.exercises.guess_animal_exercise.CorrectAnswerScreen
 import com.example.languageapp.presentation.screens.exercises.guess_animal_exercise.GuessAnimalExercise
@@ -36,6 +37,7 @@ fun NavigationHost(
     val profileScreenViewModel = koinViewModel<ProfileScreenViewModel>()
     val guessAnimalExerciseViewModel = koinViewModel<GuessAnimalExerciseViewModel>()
     val wordPracticeExerciseViewModel = koinViewModel<WordPracticeExerciseViewModel>()
+    val auditionExerciseViewModel = koinViewModel<AuditionExerciseViewModel>()
     NavHost(
         navController = navController,
         startDestination = NavigationRoutes.SPLASH_SCREEN.route,
@@ -117,7 +119,17 @@ fun NavigationHost(
             GameExercise()
         }
         composable(NavigationRoutes.AUDITION_EXERCISE.route) {
-            AuditionExercise()
+            AuditionExercise(
+                viewModel = auditionExerciseViewModel,
+                navigateToMainScreen = {
+                    navController.navigate(NavigationRoutes.MAIN_SCREEN.route) {
+                        popUpTo(navController.graph.startDestinationId) {
+                            inclusive = true
+                        }
+                        launchSingleTop = true
+                    }
+                },
+            )
         }
         composable(NavigationRoutes.GUESS_ANIMAL_EXERCISE.route) {
             GuessAnimalExercise(

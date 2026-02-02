@@ -16,6 +16,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.capitalize
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.dp
@@ -36,7 +37,7 @@ fun CorrectAnswerScreen(
         topBar = {
             GameTopAppBar(
                 navigateBack = navigateToMainScreen,
-                title = "Guess the animal",
+                title = stringResource(R.string.guess_animal_title),
                 background = green
             )
         }
@@ -57,14 +58,14 @@ fun CorrectAnswerScreen(
             )
             Spacer(Modifier.height(45.dp))
             Text(
-                text = "Holy Molly! That is Right!",
+                text = stringResource(R.string.holy_molly),
                 color = MaterialTheme.colorScheme.onBackground,
                 style = MaterialTheme.typography.titleMedium,
                 fontSize = 20.sp
             )
             Spacer(Modifier.height(42.dp))
             AppButton(
-                text = "Next",
+                text = stringResource(R.string.btn_next_exercise),
                 onClick = {
                     viewModel.updateAnimal()
                     navigateToGuessAnimal()
