@@ -13,6 +13,8 @@ enum class NavigationRoutes(
     AUDITION_EXERCISE("audition"),
     GAME_EXERCISE("game"),
     GUESS_ANIMAL_EXERCISE("guess_animal"),
+    CORRECT_ANSWER_SCREEN("correct_answer"),
+    WRONG_ANSWER_SCREEN("wrong_answer"),
     WORD_PRACTICE_EXERCISE("word_practice"),
     PROFILE("profile"),
     CHOOSE_IMAGE("choose_image")
