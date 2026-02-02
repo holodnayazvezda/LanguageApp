@@ -2,6 +2,7 @@ package com.example.languageapp.presentation.di
 
 import com.example.languageapp.presentation.components.screen_main_top_app_bar.ScreenMainTopAppBarViewModel
 import com.example.languageapp.presentation.screens.exercises.guess_animal_exercise.GuessAnimalExerciseViewModel
+import com.example.languageapp.presentation.screens.exercises.word_practice_exercise.WordPracticeExerciseViewModel
 import com.example.languageapp.presentation.screens.language_select.LanguageSelectViewModel
 import com.example.languageapp.presentation.screens.login.LogInViewModel
 import com.example.languageapp.presentation.screens.onboarding.OnboardingScreenViewModel
@@ -50,5 +51,9 @@ val presentationModule = module {
 
     single {
         GuessAnimalExerciseViewModel()
+    }
+
+    single {
+        WordPracticeExerciseViewModel()
     }
 }

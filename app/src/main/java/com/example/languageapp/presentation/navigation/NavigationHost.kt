@@ -12,6 +12,7 @@ import com.example.languageapp.presentation.screens.exercises.guess_animal_exerc
 import com.example.languageapp.presentation.screens.exercises.guess_animal_exercise.GuessAnimalExerciseViewModel
 import com.example.languageapp.presentation.screens.exercises.guess_animal_exercise.WrongAnswerScreen
 import com.example.languageapp.presentation.screens.exercises.word_practice_exercise.WordPracticeExercise
+import com.example.languageapp.presentation.screens.exercises.word_practice_exercise.WordPracticeExerciseViewModel
 import com.example.languageapp.presentation.screens.language_select.LanguageSelectScreen
 import com.example.languageapp.presentation.screens.login.LogInScreen
 import com.example.languageapp.presentation.screens.login.LogInViewModel
@@ -34,6 +35,7 @@ fun NavigationHost(
     val logInViewModel = koinViewModel<LogInViewModel>()
     val profileScreenViewModel = koinViewModel<ProfileScreenViewModel>()
     val guessAnimalExerciseViewModel = koinViewModel<GuessAnimalExerciseViewModel>()
+    val wordPracticeExerciseViewModel = koinViewModel<WordPracticeExerciseViewModel>()
     NavHost(
         navController = navController,
         startDestination = NavigationRoutes.SPLASH_SCREEN.route,
@@ -161,7 +163,17 @@ fun NavigationHost(
             )
         }
         composable(NavigationRoutes.WORD_PRACTICE_EXERCISE.route) {
-            WordPracticeExercise()
+            WordPracticeExercise(
+                navigateToMainScreen = {
+                    navController.navigate(NavigationRoutes.MAIN_SCREEN.route) {
+                        popUpTo(navController.graph.startDestinationId) {
+                            inclusive = true
+                        }
+                        launchSingleTop = true
+                    }
+                },
+                viewModel = wordPracticeExerciseViewModel
+            )
         }
         composable(NavigationRoutes.PROFILE.route) {
             ProfileScreen(

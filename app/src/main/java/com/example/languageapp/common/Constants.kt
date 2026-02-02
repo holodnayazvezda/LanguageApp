@@ -2,6 +2,7 @@ package com.example.languageapp.common
 
 import com.example.languageapp.R
 import com.example.languageapp.domain.models.AnimalModel
+import com.example.languageapp.domain.models.GuessWordModel
 import com.example.languageapp.domain.models.LanguageModel
 import com.example.languageapp.domain.models.OnboardingItem
 import com.example.languageapp.domain.models.TopUsersModel
@@ -54,4 +55,25 @@ object Constants {
             name = "cat"
         ),
     )
+    
+    val wordsToGuess = listOf(
+        GuessWordModel(
+            word = "gardener",
+            transcription = "[ 'gɑ:dnə ]",
+            translation = "садовник"
+        ),
+        GuessWordModel(
+            word = "fly",
+            transcription = "[ flai ]",
+            translation = "муха"
+        ),
+        GuessWordModel(
+            word = "dog",
+            transcription = "[ dəg ]",
+            translation = "собака"
+        )
+    )
+
+    val randomRussianWords = listOf("жопа", "школа", "учитель", "олимпиала", "подосиновик", "гриб", "лес")
+    val randomEnglishWordsToGuess = listOf("school", "ass", "teacher", "olympiad", "podosynovik", "mashroom", "forest")
 }
