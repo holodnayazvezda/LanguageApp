@@ -4,6 +4,7 @@ import com.example.languageapp.R
 import com.example.languageapp.domain.models.AnimalModel
 import com.example.languageapp.domain.models.GuessWordModel
 import com.example.languageapp.domain.models.LanguageModel
+import com.example.languageapp.domain.models.LeaderBoardModel
 import com.example.languageapp.domain.models.OnboardingItem
 import com.example.languageapp.domain.models.TopUsersModel
 
@@ -76,4 +77,11 @@ object Constants {
 
     val randomRussianWords = listOf("жопа", "школа", "учитель", "олимпиала", "подосиновик", "гриб", "лес")
     val randomEnglishWordsToGuess = listOf("school", "ass", "teacher", "olympiad", "podosynovik", "mashroom", "forest")
+
+    val dataForWidget = listOf(
+        LeaderBoardModel(5, "Vincent van Gogh", 12),
+        LeaderBoardModel(6, "Vincent van Gogh", 12),
+        LeaderBoardModel(7, "You", 12, isYou = true),
+        LeaderBoardModel(8, "Vincent van Gogh", 12),
+    )
 }
