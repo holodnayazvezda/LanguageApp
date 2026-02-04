@@ -47,7 +47,7 @@ fun ProfileScreen(
         isSystemInDarkTheme = themePreference == 1
     }
     val buttonText = if (isSystemInDarkTheme) stringResource(R.string.switch_to_light) else stringResource(R.string.switch_to_dark)
-
+    // PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)
     Scaffold(
         topBar = {
             ProfileScreenTopAppBar(viewModel)

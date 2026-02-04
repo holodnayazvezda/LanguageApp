@@ -13,6 +13,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.languageapp.presentation.components.AppButton
@@ -28,6 +29,7 @@ fun ChooseImageScreen(
     profileScreenViewModel: ProfileScreenViewModel,
     navigateBack: () -> Unit
 ) {
+    val context = LocalContext.current
     val imageCrop = remember(profileScreenViewModel.imageToCrop) {
         ImageCrop(profileScreenViewModel.imageToCrop)
     }
@@ -72,8 +74,25 @@ fun ChooseImageScreen(
                 AppButton(
                     text = "Use that image",
                     onClick = {
-                        profileScreenViewModel.imageToCrop = imageCrop.onCrop()
-                        navigateBack()
+                        val croppedBitmap = imageCrop.onCrop()
+                        if (croppedBitmap != null) {
+                            profileScreenViewModel.imageToCrop = croppedBitmap
+                            profileScreenViewModel.uploadImage(
+                                context = context,
+                                bitmap = croppedBitmap,
+                                onSuccess = {
+                                    // Handle success (maybe show toast or refresh)
+                                    navigateBack()
+                                },
+                                onError = {
+                                    // Handle error (show toast)
+                                    // For now just navigating back or staying
+                                    navigateBack() 
+                                }
+                            )
+                        } else {
+                            navigateBack()
+                        }
                     }
                 )
             }

@@ -3,7 +3,6 @@ package com.example.languageapp.presentation.screens.main
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -21,7 +20,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.languageapp.R
 import com.example.languageapp.presentation.components.ExerciseCard
 import com.example.languageapp.presentation.components.TopUserCard
@@ -30,10 +28,11 @@ import com.example.languageapp.presentation.theme.blue
 import com.example.languageapp.presentation.theme.green
 import com.example.languageapp.presentation.theme.orange
 import com.example.languageapp.presentation.theme.red
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun MainScreen(
-     viewModel: MainScreenViewModel = viewModel(),
+     viewModel: MainScreenViewModel = koinViewModel(),
      navigateToProfile: () -> Unit,
      navigateToGuessAnimalExercise: () -> Unit,
      navigateToWordPracticeExercise: () -> Unit,
@@ -41,6 +40,8 @@ fun MainScreen(
      navigateToGameExercise: () -> Unit
 ) {
     val topUsers = viewModel.topUsers.collectAsState().value
+    val exercises = viewModel.exercises.collectAsState().value
+    
     Scaffold(
         topBar = { ScreenMainTopAppBar(
             navigateToProfile = navigateToProfile
@@ -62,7 +63,7 @@ fun MainScreen(
             )
             Spacer(Modifier.height(4.dp))
             LazyColumn(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth().height(200.dp), // Limit height or use weight
                 verticalArrangement = Arrangement.spacedBy(10.dp)
             ) {
                 items(items = topUsers) { topUser ->
@@ -77,37 +78,41 @@ fun MainScreen(
                 fontSize = 20.sp,
             )
             Spacer(Modifier.height(10.dp))
-            Column(
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                    ExerciseCard(
-                        imageResId = R.drawable.panda,
-                        name = stringResource(R.string.exercise_guess_animal),
-                        backgroundColor = blue,
-                        onClick = navigateToGuessAnimalExercise
-                    )
-                    ExerciseCard(
-                        imageResId = R.drawable.pencil,
-                        name = stringResource(R.string.exercise_word_practice),
-                        backgroundColor = red,
-                        onClick = navigateToWordPracticeExercise
-                    )
-                }
-                Spacer(Modifier.height(17.dp))
-                    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                    ExerciseCard(
-                        imageResId = R.drawable.volume,
-                        name = stringResource(R.string.exercise_audition),
-                        backgroundColor = orange,
-                        onClick = navigateToAuditionExercise
-                    )
-                    ExerciseCard(
-                        imageResId = R.drawable.gamepad,
-                        name = stringResource(R.string.exercise_game),
-                        backgroundColor = green,
-                        navigateToGameExercise
-                    )
+            
+            // Dynamic Grid for Exercises
+            // Assuming exercises list comes from server. 
+            // Mapping server "type" or "name" to navigation action and colors/icons.
+            // For simplicity and matching requirements "Tile of exercise options", we can map them.
+            // If the server returns specifically those 4 exercises:
+            
+            // A simple grid implementation manually for 2 columns
+            Column(Modifier.fillMaxWidth()) {
+                val rows = exercises.chunked(2)
+                rows.forEach { rowItems ->
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        rowItems.forEach { exercise ->
+                            // Map exercise type/name to resource and color
+                            // This logic might be better in VM but putting here for UI mapping
+                            val (icon, color, action) = when(exercise.type) { // or exercise.name
+                                "GUESS_ANIMAL" -> Triple(R.drawable.panda, blue, navigateToGuessAnimalExercise)
+                                "WORD_PRACTICE" -> Triple(R.drawable.pencil, red, navigateToWordPracticeExercise)
+                                "AUDITION" -> Triple(R.drawable.volume, orange, navigateToAuditionExercise)
+                                "GAME" -> Triple(R.drawable.gamepad, green, navigateToGameExercise)
+                                else -> Triple(R.drawable.panda, blue, {}) // Fallback
+                            }
+                            
+                            ExerciseCard(
+                                imageResId = icon,
+                                name = exercise.name, // Use server name
+                                backgroundColor = color,
+                                onClick = action
+                            )
+                        }
+                    }
+                    Spacer(Modifier.height(17.dp))
                 }
             }
         }

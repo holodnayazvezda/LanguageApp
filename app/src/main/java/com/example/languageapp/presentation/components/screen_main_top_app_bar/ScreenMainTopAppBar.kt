@@ -15,14 +15,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.paint
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import com.example.languageapp.R
 import com.example.languageapp.presentation.theme.deepBlue
-import com.example.languageapp.presentation.theme.greyDark
 import com.example.languageapp.presentation.theme.lightGrey
 import com.example.languageapp.presentation.theme.white
 import org.koin.androidx.compose.koinViewModel
@@ -33,6 +33,8 @@ fun ScreenMainTopAppBar(
     navigateToProfile: () -> Unit,
 ) {
     val name = viewModel.name.collectAsState()
+    val avatarUrl = viewModel.avatarUrl.collectAsState()
+
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -42,11 +44,14 @@ fun ScreenMainTopAppBar(
     ) {
         Spacer(Modifier.height(44.dp))
         AsyncImage(
-            model = "https://gitverse.ru/sc/avatars/8794a82f5eec44538caf3ffc74ce9943586d17ecc6411b2460f6a6919e061f22",
+            model = avatarUrl.value ?: "https://gitverse.ru/sc/avatars/8794a82f5eec44538caf3ffc74ce9943586d17ecc6411b2460f6a6919e061f22", // Default or fallback
             contentDescription = "ava",
             modifier = Modifier.size(54.dp).clip(CircleShape).clickable {
                 navigateToProfile()
-            }
+            },
+            contentScale = ContentScale.Crop,
+            error = painterResource(R.drawable.sample_ava), // Assuming a drawable exists for fallback
+            placeholder = painterResource(R.drawable.sample_ava)
         )
         Spacer(Modifier.height(5.dp))
         Text(
