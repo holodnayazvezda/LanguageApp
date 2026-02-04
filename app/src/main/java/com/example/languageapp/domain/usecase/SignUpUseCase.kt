@@ -2,8 +2,15 @@ package com.example.languageapp.domain.usecase
 
 import com.example.languageapp.R
 import com.example.languageapp.domain.models.SignUpModel
+import com.example.languageapp.domain.repository.AuthRepository
 
-class SignUpUseCase {
+class SignUpUseCase(
+    private val repository: AuthRepository
+) {
+    suspend operator fun invoke(signUpModel: SignUpModel): Result<Unit> {
+        return repository.signUp(signUpModel)
+    }
+
     fun checkDataForSignUpScreen(signUpModel: SignUpModel): Int? {
         if (signUpModel.firstName.isEmpty()) {
             return R.string.error_first_name_empty

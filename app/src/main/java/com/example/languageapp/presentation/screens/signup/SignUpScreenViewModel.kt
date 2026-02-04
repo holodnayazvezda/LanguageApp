@@ -1,17 +1,20 @@
 package com.example.languageapp.presentation.screens.signup
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.languageapp.R
 import com.example.languageapp.data.storage.AppStorage
 import com.example.languageapp.domain.models.SignUpModel
 import com.example.languageapp.domain.usecase.OpenRawPdfUseCase
 import com.example.languageapp.domain.usecase.SignUpUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 
 class SignUpScreenViewModel(
     val appStorage: AppStorage,
     val openRawPdfUseCase: OpenRawPdfUseCase,
-    val signUpUseCase: SignUpUseCase = SignUpUseCase()
+    val signUpUseCase: SignUpUseCase
 ): ViewModel() {
     private var _signUpModel = MutableStateFlow(SignUpModel(
         firstName = appStorage.firstName ?: "",
@@ -59,6 +62,22 @@ class SignUpScreenViewModel(
             errorResId = errorResId
         )
         return isError
+    }
+
+    fun register(onSuccess: () -> Unit) {
+        if (!checkOnErrors(true)) {
+            viewModelScope.launch {
+                val result = signUpUseCase(_signUpModel.value)
+                if (result.isSuccess) {
+                    onSuccess()
+                } else {
+                    _signUpModel.value = _signUpModel.value.copy(
+                        isError = true,
+                        errorResId = R.string.error 
+                    )
+                }
+            }
+        }
     }
 
     fun readError() {

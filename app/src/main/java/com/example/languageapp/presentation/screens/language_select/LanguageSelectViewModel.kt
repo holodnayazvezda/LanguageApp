@@ -4,8 +4,6 @@ import android.app.LocaleManager
 import android.content.Context
 import android.os.Build
 import android.os.LocaleList
-import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.ViewModel
 import com.example.languageapp.common.Constants
 import kotlinx.coroutines.flow.MutableStateFlow

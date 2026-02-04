@@ -130,9 +130,7 @@ fun CreatePasswordScreen(
             AppButton(
                 text = stringResource(R.string.signup),
                 onClick = {
-                    if (!viewModel.checkOnErrors(true)) {
-                        navigateToLogin()
-                    }
+                    viewModel.register(navigateToLogin)
                 }
             )
             Spacer(Modifier.height(30.dp))
