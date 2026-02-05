@@ -93,4 +93,8 @@
     <string name="holy_molly">Holy Molly! That is Right!</string>
     <string name="wrong_answer">Eh? Wrong answer :(</string>
     <string name="that_is">That is: %1$s</string>
+
+    <!-- Notifications -->
+    <string name="notification_title">We miss you!</string>
+    <string name="notification_text">Come back and learn something new today!</string>
 </resources>

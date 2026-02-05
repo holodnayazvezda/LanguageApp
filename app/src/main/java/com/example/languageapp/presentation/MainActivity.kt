@@ -1,5 +1,6 @@
 package com.example.languageapp.presentation
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -12,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.languageapp.presentation.navigation.NavigationHost
+import com.example.languageapp.presentation.receiver.NotificationReceiver
 import com.example.languageapp.presentation.theme.LanguageAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -22,6 +24,14 @@ class MainActivity : ComponentActivity() {
             LanguageAppTheme {
                 NavigationHost()
             }
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        if (!isChangingConfigurations) {
+            val intent = Intent(this, NotificationReceiver::class.java)
+            sendBroadcast(intent)
         }
     }
 }

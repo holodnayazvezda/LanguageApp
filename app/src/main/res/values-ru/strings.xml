@@ -93,4 +93,8 @@
     <string name="holy_molly">Святые угодники! Это верно!</string>
     <string name="wrong_answer">А? Неправильный ответ :(</string>
     <string name="that_is">Это: %1$s</string>
+
+    <!-- Notifications -->
+    <string name="notification_title">Мы скучаем!</string>
+    <string name="notification_text">Возвращайтесь и изучите что-нибудь новое сегодня!</string>
 </resources>
